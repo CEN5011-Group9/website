@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  webapp:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      SECRET_KEY: ${SECRET_KEY}
+      JWT_SECRET: ${JWT_SECRET}
+      DATABASE_URL: ${DATABASE_URL}
+      ENV: development
+      NODE_ENV: development
+    depends_on:
+      - database
+    ports:
+      - "4200:4200"
+
+  database:
+    image: postgres:alpine
+    volumes:
+      - database:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+
+volumes:
+  database: {}
