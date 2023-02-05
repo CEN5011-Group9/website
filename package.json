@@ -38,6 +38,7 @@
     "@ngx-pwa/local-storage": "^15.0.0",
     "@prisma/client": "^4.9.0",
     "argon2": "^0.30.3",
+    "bootstrap": "^5.2.3",
     "bufferutil": "^4.0.7",
     "cache-manager": "^5.1.4",
     "class-transformer": "^0.4.0",
