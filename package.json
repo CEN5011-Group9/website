@@ -34,6 +34,7 @@
     "@nestjs/passport": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/testing": "^9.2.1",
+    "@ng-bootstrap/ng-bootstrap": "^14.0.1",
     "@nguniversal/express-engine": "^15.1.0",
     "@ngx-pwa/local-storage": "^15.0.0",
     "@prisma/client": "^4.9.0",
