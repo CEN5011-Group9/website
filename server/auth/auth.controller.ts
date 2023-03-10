@@ -1,12 +1,16 @@
-import { Controller, Request, Post, UseGuards, Body } from '@nestjs/common';
-import { User } from '@prisma/client';
+import { Controller, Request, Post, UseGuards, Body, Get } from '@nestjs/common';
+import { User, UserRole } from '@prisma/client';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './local-auth.guard';
 import { Public } from '../public.decorator';
+import { DatabaseService } from '../database/database.service';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly $authService: AuthService) {}
+  constructor(
+    private readonly $authService: AuthService,
+    private readonly $databaseService: DatabaseService
+  ) {}
 
   @Public()
   @UseGuards(LocalAuthGuard)
@@ -18,9 +22,6 @@ export class AuthController {
   /**
    * Controller for User Registartion
    * @param email         User email
-   * @param displayName   User display name
-   * @param website       User website
-   * @param institution   User institution
    * @param password      User password not hashed
    * @returns HttpResponse Promise, will include
    *          Success -> valid JWT token
@@ -33,5 +34,17 @@ export class AuthController {
     @Body('password') password: string
   ): Promise<any> {
     return this.$authService.register(userInput, password);
+  }
+
+  @Public()
+  @Get('is-admin')
+  public async isAdmin(@Request() request: any): Promise<boolean> {
+    const user = await this.$databaseService.user.findFirst({
+      where: {
+        email: request.user.username
+      }
+    })
+
+    return user?.role == UserRole.Admin
   }
 }
