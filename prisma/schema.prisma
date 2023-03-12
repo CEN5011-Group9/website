@@ -29,4 +29,18 @@ model Club {
   name    String @unique
   owner   User   @relation(fields: [ownerId], references: [id])
   ownerId String @db.Uuid
+  phone String @unique
+  email String @unique
+  description String
+  address Address @relation(fields: [addressId], references: [id])
+  addressId String @db.Uuid
+}
+
+model Address{
+  id String @id @db.Uuid
+  addressline1 String
+  street String
+  city String
+  state String
+  zipcode String 
 }

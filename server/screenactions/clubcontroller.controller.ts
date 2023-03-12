@@ -8,7 +8,7 @@ export class ClubController {
     constructor( private clubservice : ClubService ) { }
     
     @Get()
-    getClubDetails() : ClubDTO {
+    async getClubDetails() : Promise<ClubDTO> {
         return this.clubservice.getClubDetails();
     }
 }
