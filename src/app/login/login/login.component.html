@@ -1,0 +1,24 @@
+<form [formGroup]="loginForm" (submit)="onSubmit()">
+  <div>
+    <label for="email">Email: </label>
+    <input type="text"
+      id="email"
+      name="email"
+      formControlName="email"
+      required
+    />
+  </div>
+  <div>
+    <label for="password">Password: </label>
+    <input type="password"
+      id="password"
+      name="password"
+      formControlName="password"
+      required
+    />
+  </div>
+  <button type="submit"
+    [disabled]="loginForm.invalid"
+  >Login</button>
+  <div class="error"></div>
+</form>
