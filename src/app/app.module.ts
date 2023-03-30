@@ -6,10 +6,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthHeaderInterceptor } from './auth-header.interceptor';
+import { TrackingPageComponent } from './tracking-page/tracking-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TrackingPageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

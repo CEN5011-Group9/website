@@ -1,0 +1,100 @@
+<html>
+<head>
+    <title>Tracking Page</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar{
+            background-color: #333;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .navbar .left-link{
+            float: left;
+            padding: 12px;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .navbar .right-link{
+            float: right;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 12px;
+        }
+
+        .navbar .right-link a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 16px;
+        }
+
+        .navbar .right-link a.active{
+           font-weight: bold; 
+        }
+
+        .table-container{
+            text-align: center;
+            border: #333;
+        }
+
+        table{
+            margin: auto;
+        }
+        body{
+            background: #a74e4e;
+        }
+        .tracking-page-form{
+            background: #f5d742;
+        }
+        
+    </style>
+</head>
+<body class="tracking-page-common">
+<form class="tracking-page-form" [formGroup]="trackingPageForm" (submit)="onSubmit()">
+    <div class="navbar">
+        <a href="#" class="left-link">Profile</a>
+        <div class="right-link">
+            <a href="#">View Clubs</a>
+            <a href="#">View Users</a>
+            <a href="#">Tracking</a>
+            <a href="#">Search Page</a>
+        </div>
+    </div>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Club Name</th>
+                    <th>Club Detail Link</th>
+                    <th>Number of Hours</th>
+                </tr>
+            </thead>
+            <!-- -->
+            <tbody>
+                <tr *ngFor="let club of clubs">
+                    <td>{{club.name}}</td>
+                    <td><a href="{{ club.link }}">{{ club.link }}</a></td>
+                    <td>{{club.hours}}</td>
+                </tr>
+                <tr>
+                    <td>Total Hours: </td>
+                    <td> </td>
+                    <td>{{totalHours}}</td>
+                </tr>    
+            </tbody>
+        </table>
+    </div>
+</form>
+</body>
+</html>
+
