@@ -79,7 +79,7 @@
                     <th>Number of Hours</th>
                 </tr>
             </thead>
-            <!-- -->
+            
             <tbody>
                 <tr *ngFor="let club of clubs">
                     <td>{{club.name}}</td>
@@ -93,7 +93,11 @@
                 </tr>    
             </tbody>
         </table>
+        <button type="submit" [disabled]="trackingPageForm.invalid">
+            Update
+        </button>
     </div>
+    <div class="error"></div>
 </form>
 </body>
 </html>

@@ -33,7 +33,10 @@ export class TrackingPageComponent implements OnInit{
     ) {}
 
   onSubmit(){
-
+    this.$http.post<{ accessToken: String }>(
+      'api/user/update',
+      this.trackingPageForm.value
+    )
   }
 
   
