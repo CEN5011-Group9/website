@@ -1,0 +1,130 @@
+<html>
+<head>
+    <title>User Profile</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar{
+            background-color: #333;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .navbar .left-link{
+            float: left;
+            padding: 12px;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .navbar .right-link{
+            float: right;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 12px;
+        }
+
+        .navbar .right-link a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 16px;
+        }
+
+        .navbar .right-link a.active{
+           font-weight: bold; 
+        }
+
+        .table-container{
+            text-align: center;
+            border: #333;
+        }
+
+        table{
+            margin: auto;
+        }
+        body{
+            background: #a74e4e;
+        }
+        .tracking-page-form{
+            background: #f5d742;
+        }
+        
+    </style>
+</head>
+<body class="tracking-page-common">
+<form class="tracking-page-form" [formGroup]="userProfilePageForm" (submit)="onSubmit()">
+    <div class="navbar">
+        <a href="#" class="left-link">Profile</a>
+        <div class="right-link">
+            <a href="#">View Clubs</a>
+            <a href="#">View Users</a>
+            <a href="#">Tracking</a>
+            <a href="#">Search Page</a>
+        </div>
+    </div>
+    <div>
+        <h2>User Profile</h2>
+        <div>
+            <label for="name">Name:</label>
+            <input type="text"
+                id = "name"
+                name = "name"
+                formControlName = "name"
+                required
+            />
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="text"
+                id = "email"
+                name = "email"
+                formControlName = "email"
+                required
+            />
+        </div>
+        <div>
+            <label for="phone">Phone Number:</label>
+            <input type="text"
+                id = "phone"
+                name = "phone"
+                formControlName = "phone"
+                required
+            />
+        </div>
+        <div>
+            <label for="newpassword">New Password:</label>
+            <input type="password"
+                id = "newpassword"
+                name = "newpassword"
+                formControlName = "newpassword"
+                (keyup) = "checkPasswordMatch($event)"
+                required
+            />
+        </div>
+        <div>
+            <label for="confirmpassword">Confirm Password:</label>
+            <input type="password"
+                id = "confirmpassword"
+                name = "confirmpassword"
+                formControlName = "confirmpassword"
+                (keyup) = "checkPasswordMatch($event)"
+                required
+            />
+        </div>
+        <button type="submit" [disabled]="userProfilePageForm.invalid">
+            Update
+        </button>
+    </div>
+    <div class="error"></div>
+</form>
+</body>
+</html>
+

@@ -7,11 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthHeaderInterceptor } from './auth-header.interceptor';
 import { TrackingPageComponent } from './tracking-page/tracking-page.component';
+import { UserProfilePageComponent } from './user-profile-page/user-profile-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TrackingPageComponent
+    TrackingPageComponent,
+    UserProfilePageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
