@@ -16,10 +16,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  @ViewChild('error', { static: false }) private errorDiv!: ElementRef;
+  @ViewChild('errorLogin', { static: false }) private errorDiv!: ElementRef;
+  @ViewChild('errorRegister', { static: false }) private errorDivReg!: ElementRef;
 
   public loginForm = this.$fb.group({
     email: ['', Validators.required, Validators.email],
+    password: ['', Validators.required]
+  });
+
+  public registrationPageForm = this.$fb.group({
+    email: [ '', Validators.required, Validators.email],
+    phoneNumber: ['', Validators.required],
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required],
     password: ['', Validators.required]
   });
 
@@ -46,6 +55,24 @@ export class LoginComponent {
       error: (error: any) => {
         if (isPlatformBrowser(this.$platformId)) {
           this.errorDiv.nativeElement.text = error;
+        }
+      }
+    });
+  }
+
+  register(){
+    this.$http.post<{ accessToken: string}>(
+      '/api/auth/register',
+      this.registrationPageForm.value
+    ).subscribe({
+      next: (data: { accessToken: string }) => {
+        if (isPlatformBrowser(this.$platformId)) {
+          window.localStorage.setItem('accessToken', data.accessToken);
+        }
+      },
+      error: (error: any) => {
+        if (isPlatformBrowser(this.$platformId)) {
+          this.errorDivReg.nativeElement.text = error;
         }
       }
     });

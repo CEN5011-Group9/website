@@ -1,24 +1,107 @@
-<form [formGroup]="loginForm" (submit)="onSubmit()">
-  <div>
-    <label for="email">Email: </label>
-    <input type="text"
-      id="email"
-      name="email"
-      formControlName="email"
-      required
-    />
+<html>
+  <head>
+    <style>
+      .parent{
+        border: 1px solid black;
+        margin: 1rem;
+        padding: 2rem 2rem;
+        text-align: center;
+        background: #f5d742;
+      }
+      .child{
+        display: inline-block;
+        padding: 1rem 1rem;
+        vertical-align: middle;
+      }
+    </style>
+  </head>
+  <body>
+<div class="parent">
+  <div class="child">
+    <h2>Log In</h2>
+    <form [formGroup]="loginForm" (submit)="onSubmit()">
+      <div>
+        <label for="email">Email: </label>
+        <input type="text"
+          id="email"
+          name="email"
+          formControlName="email"
+          required
+        />
+      </div>
+      <div>
+        <label for="password">Password: </label>
+        <input type="password"
+          id="password"
+          name="password"
+          formControlName="password"
+          required
+        />
+      </div>
+      <button type="submit"
+        [disabled]="loginForm.invalid"
+      >Login</button>
+      <div class="errorLogin"></div>
+    </form>
   </div>
-  <div>
-    <label for="password">Password: </label>
-    <input type="password"
-      id="password"
-      name="password"
-      formControlName="password"
-      required
-    />
+  <div class="child">
+    <h2>Register</h2>
+    <form [formGroup] = "registrationPageForm" (submit) = "register()">
+      <div>
+          <div>
+              <label for="email">Email</label>
+              <input type="text"
+              id="email"
+              name="email"
+              formControlName="email"
+              required
+              />
+          </div>
+          <div>
+              <label for="firstName">First Name</label>
+              <input type="text"
+              id="firstName"
+              name="firstName"
+              formControlName="firstName"
+              required
+              />
+          </div>
+          <div>
+              <label for="lastName">Last Name</label>
+              <input type="text"
+              id="lastName"
+              name="lastName"
+              formControlName="lastName"
+              required
+              />
+          </div>
+          <div>
+              <label for="phoneNumber">Phone Number</label>
+              <input type="text"
+              id="phoneNumber"
+              name="phoneNumber"
+              formControlName="phoneNumber"
+              required
+              />
+          </div>
+          <div>
+              <label for="password">Password</label>
+              <input type="password"
+              id="password"
+              name="password"
+              formControlName="password"
+              required
+              />
+          </div>
+          <button
+          type="submit"
+          [disabled] = "registrationPageForm.invalid"
+          >Register
+          </button>
+          <div class="errorRegister"></div>
+      </div>
+    </form>
   </div>
-  <button type="submit"
-    [disabled]="loginForm.invalid"
-  >Login</button>
-  <div class="error"></div>
-</form>
+</div>
+</body>
+</html>

@@ -9,6 +9,7 @@ import { AuthHeaderInterceptor } from './auth-header.interceptor';
 import { TrackingPageComponent } from './tracking-page/tracking-page.component';
 import { UserProfilePageComponent } from './user-profile-page/user-profile-page.component';
 import { ViewUsersPageComponent } from './view-users-page/view-users-page.component';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ViewUsersPageComponent } from './view-users-page/view-users-page.compon
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LoginModule
   ],
   providers: [
     {
