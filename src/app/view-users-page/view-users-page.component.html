@@ -1,0 +1,102 @@
+<html>
+<head>
+    <title>User Profile</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar{
+            background-color: #333;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .navbar .left-link{
+            float: left;
+            padding: 12px;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .navbar .right-link{
+            float: right;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 12px;
+        }
+
+        .navbar .right-link a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 16px;
+        }
+
+        .navbar .right-link a.active{
+           font-weight: bold; 
+        }
+
+        .table-container{
+            text-align: center;
+            border: #333;
+        }
+
+        table{
+            margin: auto;
+        }
+        body{
+            background: #a74e4e;
+        }
+        .tracking-page-form{
+            background: #f5d742;
+        }
+        
+    </style>
+</head>
+<body class="tracking-page-common">
+<form class="tracking-page-form" [formGroup]="viewUsersPageForm" >
+    <div class="navbar">
+        <a href="#" class="left-link">Profile</a>
+        <div class="right-link">
+            <a href="#">View Clubs</a>
+            <a href="#">View Users</a>
+            <a href="#">Tracking</a>
+            <a href="#">Search Page</a>
+        </div>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <td>Name</td>
+                <td>Email</td>
+                <td>User Type</td>
+                <td>Phone Number</td>
+                <td>View Tracking</td>
+                <td>Update</td>
+                <td>Delete</td>
+            </thead>
+            <tbody >
+                <tr *ngFor="let user of users">
+                    <td>{{user.name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.userType}}</td>
+                    <td>{{user.phone}}</td>
+                    <td><button type="submit" (submit)="viewTracking()">View Tracking</button></td>
+                    <td><button type="submit" (submit)="update()">Update</button></td>
+                    <td><button type="submit" (submit)="delete()">Delete</button></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="error"></div>
+</form>
+</body>
+</html>
+
