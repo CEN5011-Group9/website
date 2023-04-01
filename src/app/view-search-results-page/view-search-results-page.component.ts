@@ -21,4 +21,17 @@ export class ViewSearchResultsPageComponent {
     private readonly $http: HttpClient,
     private readonly $router: Router
   ){}
+
+  toggleMenu(){
+    console.log("Hello from toggleMenu()");
+    const x = document.getElementById("submenu");
+    console.log(x);
+    console.log(x?.style);
+      console.log(x?.style.display);
+      if( x?.style.display === "block" ){
+        x.style.display = "";
+      } else if( x?.style.display === "block" || x?.style.display === "" ) {
+        x.style.display = "block";
+      }
+  }
 }
