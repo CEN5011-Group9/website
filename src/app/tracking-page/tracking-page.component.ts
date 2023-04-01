@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Club } from './club';
+import { Club } from '../club';
 
 @Component({
   selector: 'app-tracking-page',
@@ -14,9 +14,9 @@ export class TrackingPageComponent implements OnInit{
   public trackingPageForm = this.$fb.group({});
 
   clubs : Club[] = [
-    { name: 'Rotary', link: 'https://www.rotary.org/en', hours: 2},
-    { name: 'Peta', link: 'https://www.peta.org/', hours: 15},
-    { name: 'ACM', link: 'https://www.acm.org/', hours: 5 }
+    { name: 'Rotary', link: 'https://www.rotary.org/en', hours: 2, type: "Social Service", city: "Miami", state: "Florida", zipcode: "33172"},
+    { name: 'Peta', link: 'https://www.peta.org/', hours: 15, type: "Social Service", city: "Miami", state: "Florida", zipcode: "33375"},
+    { name: 'ACM', link: 'https://www.acm.org/', hours: 5 , type: "Social Service", city: "Miami", state: "Florida", zipcode: "33987"}
   ];
 
   totalHours: number = 0;

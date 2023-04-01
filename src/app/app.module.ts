@@ -10,13 +10,15 @@ import { TrackingPageComponent } from './tracking-page/tracking-page.component';
 import { UserProfilePageComponent } from './user-profile-page/user-profile-page.component';
 import { ViewUsersPageComponent } from './view-users-page/view-users-page.component';
 import { LoginModule } from './login/login.module';
+import { ViewSearchResultsPageComponent } from './view-search-results-page/view-search-results-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TrackingPageComponent,
     UserProfilePageComponent,
-    ViewUsersPageComponent
+    ViewUsersPageComponent,
+    ViewSearchResultsPageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

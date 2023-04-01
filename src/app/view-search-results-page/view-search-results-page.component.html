@@ -1,0 +1,104 @@
+<html>
+<head>
+    <title>User Profile</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar{
+            background-color: #333;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .navbar .left-link{
+            float: left;
+            padding: 12px;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .navbar .right-link{
+            float: right;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 12px;
+        }
+
+        .navbar .right-link a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 16px;
+        }
+
+        .navbar .right-link a.active{
+           font-weight: bold; 
+        }
+
+        .table-container{
+            text-align: center;
+            border: #333;
+        }
+
+        table{
+            margin: auto;
+        }
+        body{
+            background: #a74e4e;
+        }
+        .tracking-page-form{
+            background: #f5d742;
+        }
+        
+    </style>
+</head>
+<body class="tracking-page-common">
+<form class="tracking-page-form" >
+    <div class="navbar">
+        <a href="#" class="left-link">Profile</a>
+        <div class="right-link">
+            <a href="#">View Clubs</a>
+            <a href="#">View Users</a>
+            <a href="#">Tracking</a>
+            <a href="#">Search Page</a>
+        </div>
+    </div>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Club Name</th>
+                    <th>Club Type</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip Code</th>
+                    <th>View Club Details Page</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <tr *ngFor="let club of clubs">
+                    <td>1</td>
+                    <td>{{club.name}}</td>
+                    <td>{{club.type}}</td>
+                    <td>{{club.city}}</td>
+                    <td>{{club.state}}</td>
+                    <td>{{club.zipcode}}</td>
+                    <td><a href="{{ club.link }}">{{ club.link }}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="error"></div>
+</form>
+</body>
+</html>
+

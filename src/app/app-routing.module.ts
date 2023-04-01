@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TrackingPageComponent } from './tracking-page/tracking-page.component';
 import { UserProfilePageComponent } from './user-profile-page/user-profile-page.component';
+import { ViewSearchResultsPageComponent } from './view-search-results-page/view-search-results-page.component';
 import { ViewUsersPageComponent } from './view-users-page/view-users-page.component';
 
 const routes: Routes = [{
@@ -15,6 +16,9 @@ const routes: Routes = [{
 },
 {
   path: 'view-users-page', component:ViewUsersPageComponent
+},
+{
+  path: 'view-search-results-page', component:ViewSearchResultsPageComponent
 }];
 
 @NgModule({
