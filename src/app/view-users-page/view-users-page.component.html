@@ -1,79 +1,4 @@
-<html>
-<head>
-    <title>User Profile</title>
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        .navbar{
-            background-color: #333;
-            overflow: hidden;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .navbar .left-link{
-            float: left;
-            padding: 12px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 18px;
-        }
-
-        .navbar .right-link{
-            float: right;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            padding: 12px;
-        }
-
-        .navbar .right-link a {
-            color: #fff;
-            text-decoration: none;
-            margin-left: 20px;
-            font-size: 16px;
-        }
-
-        .navbar .right-link a.active{
-           font-weight: bold; 
-        }
-
-        .table-container{
-            text-align: center;
-            border: #333;
-        }
-
-        table{
-            margin: auto;
-        }
-        body{
-            background: #a74e4e;
-        }
-        .tracking-page-form{
-            background: #f5d742;
-        }
-        .left-side{
-            background-color: azure;
-        }
-        .left-link{
-            color: black;
-        }
-        .display-item{
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            margin: 12px 0;
-        }
-        #submenu{
-            display: none;
-        }
-        
-        
-    </style>
-</head>
-<body class="tracking-page-common">
+<div class="tracking-page-common">
 <form class="tracking-page-form" [formGroup]="viewUsersPageForm" >
     <div class="navbar">
         <div class="left-side" >
@@ -129,6 +54,5 @@
     </div>
     <div class="error"></div>
 </form>
-</body>
-</html>
+</div>
 
