@@ -4,6 +4,7 @@ import { TrackingPageComponent } from './tracking-page/tracking-page.component';
 import { UserProfilePageComponent } from './user-profile-page/user-profile-page.component';
 import { ViewSearchResultsPageComponent } from './view-search-results-page/view-search-results-page.component';
 import { ViewUsersPageComponent } from './view-users-page/view-users-page.component';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
 const routes: Routes = [{
   path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
@@ -19,6 +20,9 @@ const routes: Routes = [{
 },
 {
   path: 'view-search-results-page', component:ViewSearchResultsPageComponent
+},
+{
+  path: 'welcome-page', component:WelcomePageComponent
 }];
 
 @NgModule({

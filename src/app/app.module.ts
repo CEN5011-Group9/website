@@ -11,6 +11,7 @@ import { UserProfilePageComponent } from './user-profile-page/user-profile-page.
 import { ViewUsersPageComponent } from './view-users-page/view-users-page.component';
 import { LoginModule } from './login/login.module';
 import { ViewSearchResultsPageComponent } from './view-search-results-page/view-search-results-page.component';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ViewSearchResultsPageComponent } from './view-search-results-page/view-
     TrackingPageComponent,
     UserProfilePageComponent,
     ViewUsersPageComponent,
-    ViewSearchResultsPageComponent
+    ViewSearchResultsPageComponent,
+    WelcomePageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
