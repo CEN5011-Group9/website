@@ -12,6 +12,7 @@ import { ViewUsersPageComponent } from './view-users-page/view-users-page.compon
 import { LoginModule } from './login/login.module';
 import { ViewSearchResultsPageComponent } from './view-search-results-page/view-search-results-page.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { ViewClubContactsPageComponent } from './view-club-contacts-page/view-club-contacts-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
     UserProfilePageComponent,
     ViewUsersPageComponent,
     ViewSearchResultsPageComponent,
-    WelcomePageComponent
+    WelcomePageComponent,
+    ViewClubContactsPageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
