@@ -14,6 +14,7 @@ import { ViewSearchResultsPageComponent } from './view-search-results-page/view-
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { ViewClubContactsPageComponent } from './view-club-contacts-page/view-club-contacts-page.component';
 import { ManageClubPageComponent } from './manage-club-page/manage-club-page.component';
+import { ClubDetailsPageComponent } from './club-details-page/club-details-page.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ManageClubPageComponent } from './manage-club-page/manage-club-page.com
     ViewSearchResultsPageComponent,
     WelcomePageComponent,
     ViewClubContactsPageComponent,
-    ManageClubPageComponent
+    ManageClubPageComponent,
+    ClubDetailsPageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

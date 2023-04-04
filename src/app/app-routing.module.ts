@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ClubDetailsPageComponent } from './club-details-page/club-details-page.component';
 import { ManageClubPageComponent } from './manage-club-page/manage-club-page.component';
 import { TrackingPageComponent } from './tracking-page/tracking-page.component';
 import { UserProfilePageComponent } from './user-profile-page/user-profile-page.component';
@@ -31,6 +32,9 @@ const routes: Routes = [{
 },
 {
   path: 'manage-club-page', component:ManageClubPageComponent
+},
+{
+  path: 'club-details-page', component: ClubDetailsPageComponent
 }];
 
 @NgModule({

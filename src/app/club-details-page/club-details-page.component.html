@@ -27,30 +27,30 @@
                 <a href="#">Search Page</a>
             </div>
         </div>
-        <div class="club-contacts-page">
+        <div>
             <div class="display-name">
                 {{club.name}}
             </div>
             <div class="display-details">
                 <table>
                     <tr>
-                        <td>Name: </td>
-                        <td>{{club.name}} </td>
+                        <td>{{club.type}} </td>
                     </tr>
                     <tr>
-                        <td>Email: </td>
-                        <td>RotaryClub.en</td>
+                        <td>10</td>
                     </tr>
                     <tr>
-                        <td>Address: </td>
-                        <td>{{club.city}}, {{club.state}}, {{club.zipcode}}</td>
+                        <td>{{club.city}}</td>
                     </tr>
                 </table>
             </div>
-            <div class="club-return-link">
-                <a href="http://localhost:4200/club-details-page">Return to club info page</a>
+            <div class="display-buttons">
+                <button id="joinbutton" (click)="join()">Join</button>
+                <button id="leavebutton" (click)="leave()">Leave</button>
+                <div class="display-link">
+                    <a href="http://localhost:4200/view-club-contacts-page">View Club Contacts Page</a>
+                </div>
             </div>
-            
         </div>
         <div class="error"></div>
     </form>

@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.navbar{
+    background-color: #333;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar .left-link{
+    float: left;
+    padding: 12px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.navbar .right-link{
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 12px;
+}
+
+.navbar .right-link a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+.navbar .right-link a.active{
+   font-weight: bold; 
+}
+
+.table-container{
+    text-align: center;
+    border: #333;
+}
+
+table{
+    margin: auto;
+}
+body{
+    background: #a74e4e;
+}
+.tracking-page-form{
+    background: #f5d742;
+}
+.left-side{
+    background-color: azure;
+}
+.left-link{
+    color: black;
+}
+.display-item{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin: 12px 0;
+}
+.display-name{
+    position: absolute; /* or relative, depending on your layout */
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: aquamarine;
+    align-items: center;
+    text-decoration: none;   
+}
+.display-details{
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: cornsilk;
+    align-items: center;
+    text-decoration: none;
+    margin: 12px 0;
+}
+.display-buttons{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: cornsilk;
+    align-items: center;
+    text-decoration: none;
+    margin: 12px 0;
+}
+.display-link{
+    
+}
+#leavebutton{
+    display: none;
+    background-color: crimson;
+}
+#joinbutton{
+    display: block;
+    background-color: aquamarine;
+}
+#submenu{
+    display: none;
+}
