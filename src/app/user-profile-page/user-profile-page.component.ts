@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-profile-page',
   templateUrl: './user-profile-page.component.html',
-  styleUrls: ['./user-profile-page.component.scss']
+  styleUrls: ['../styles.scss']
 })
 export class UserProfilePageComponent {
   

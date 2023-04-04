@@ -7,7 +7,7 @@ import { Club } from '../club';
 @Component({
   selector: 'app-view-search-results-page',
   templateUrl: './view-search-results-page.component.html',
-  styleUrls: ['./view-search-results-page.component.scss']
+  styleUrls: ['../styles.scss']
 })
 export class ViewSearchResultsPageComponent {
 

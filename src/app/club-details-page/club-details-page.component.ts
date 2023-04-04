@@ -4,7 +4,7 @@ import { Club } from '../club';
 @Component({
   selector: 'app-club-details-page',
   templateUrl: './club-details-page.component.html',
-  styleUrls: ['./club-details-page.component.scss']
+  styleUrls: ['../styles.scss']
 })
 export class ClubDetailsPageComponent {
   
@@ -40,5 +40,5 @@ export class ClubDetailsPageComponent {
         x.style.display = "block";
       }
   }
-  
+
 }

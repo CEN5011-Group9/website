@@ -7,7 +7,7 @@ import { Club } from '../club';
 @Component({
   selector: 'app-tracking-page',
   templateUrl: './tracking-page.component.html',
-  styleUrls: ['./tracking-page.component.scss']
+  styleUrls: ['../styles.scss']
 })
 export class TrackingPageComponent implements OnInit{
 

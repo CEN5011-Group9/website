@@ -7,7 +7,7 @@ import { Club } from '../club';
 @Component({
   selector: 'app-manage-club-page',
   templateUrl: './manage-club-page.component.html',
-  styleUrls: ['./manage-club-page.component.scss']
+  styleUrls: ['../styles.scss']
 })
 export class ManageClubPageComponent {
   club : Club = { name: 'Rotary', link: 'https://www.rotary.org/en', hours: 2, type: "Social Service", city: "Miami", state: "Florida", zipcode: "33172"};

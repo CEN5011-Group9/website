@@ -8,7 +8,7 @@ import { style } from '@angular/animations';
 @Component({
   selector: 'app-view-users-page',
   templateUrl: './view-users-page.component.html',
-  styleUrls: ['./view-users-page.component.scss']
+  styleUrls: ['../styles.scss']
 })
 export class ViewUsersPageComponent {
     
