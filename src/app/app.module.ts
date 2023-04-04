@@ -13,6 +13,7 @@ import { LoginModule } from './login/login.module';
 import { ViewSearchResultsPageComponent } from './view-search-results-page/view-search-results-page.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { ViewClubContactsPageComponent } from './view-club-contacts-page/view-club-contacts-page.component';
+import { ManageClubPageComponent } from './manage-club-page/manage-club-page.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ViewClubContactsPageComponent } from './view-club-contacts-page/view-cl
     ViewUsersPageComponent,
     ViewSearchResultsPageComponent,
     WelcomePageComponent,
-    ViewClubContactsPageComponent
+    ViewClubContactsPageComponent,
+    ManageClubPageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

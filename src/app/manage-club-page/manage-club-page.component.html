@@ -1,0 +1,80 @@
+<div class="tracking-page-common">
+    <form class="tracking-page-form" [formGroup]="manageClubForm" (submit)="onSubmit()" >
+        <div class="navbar">
+            <div class="left-side" >
+                <div class="user-info" (click)="toggleMenu()">
+                    Profile
+                </div>
+                
+                <div class="sub-left" id="submenu">
+                    <div class="user-info">
+                        <h2>Random Guy</h2>
+                    </div>
+                    <hr>
+                    
+                    <a href="http://localhost:4200/user-profile-page" class="display-item">
+                        <p>Update Profile</p>
+                    </a>
+                    <a href="http://localhost:4200/login" class="display-item">
+                        <p>Logout</p>
+                    </a>
+                </div>
+            </div>
+            <div class="right-link">
+                <a href="#">View Clubs</a>
+                <a href="http://localhost:4200/view-users-page">View Users</a>
+                <a href="http://localhost:4200/tracking-page">Tracking</a>
+                <a href="#">Search Page</a>
+            </div>
+        </div>
+        <div class="manage-club-page">
+            <div> 
+                <label for="clubname">Name: </label>
+                <input
+                    type="text"
+                    name="clubname"
+                    id="clubname"
+                    formControlName="clubname"
+                />
+            </div>
+            <div>
+                <label for="clubtype">Type: </label>
+                <input
+                    type="text"
+                    name="clubtype"
+                    id="clubtype"
+                    formControlName="clubtype"
+                />
+            </div>
+            <div>
+                <label for="addressLine1">Address Line 1: </label>
+                <input
+                    type="text"
+                    name="addressLine1"
+                    id="addressLine1"
+                    formControlName="addressLine1"
+                />
+            </div>                
+            <div>
+                <label for="city">City: </label>
+                <input
+                    type="text"
+                    name="city"
+                    id="city"
+                    formControlName="city"
+                />
+            </div>                
+            <div>
+                <label for="state">State: </label>
+                <input
+                    type="text"
+                    name="state"
+                    id="state"
+                    formControlName="state"
+                />
+            </div>
+            <button class="updateButton">Update</button>
+        </div>
+        <div class="error"></div>
+    </form>
+    </div>
