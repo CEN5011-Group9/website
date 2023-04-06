@@ -3,7 +3,7 @@
     <h2>Log In</h2>
     <form [formGroup]="loginForm" (submit)="onSubmit()">
       <div>
-        <label for="email">Email: </label>
+        <label for="email">Email:</label>
         <input type="text"
           id="email"
           name="email"
@@ -75,6 +75,11 @@
               required
               />
           </div>
+          <div>
+          <label>Check this box if registering </label>
+          <label>as a club representative.</label>
+          </div>
+          <input type="checkbox" id="check" name="check" checked>
           <button
           type="submit"
           [disabled] = "registrationPageForm.invalid"
