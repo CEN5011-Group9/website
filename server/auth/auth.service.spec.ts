@@ -4,7 +4,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { DatabaseService } from '../database/database.service';
 import { AuthModule } from './auth.module';
 import { AuthService } from './auth.service';
-import { EmailService } from '../email/email.service';
+//import { EmailService } from '../email/email.service';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -23,7 +23,7 @@ describe('AuthService', () => {
           })
         })
       ],
-      providers: [AuthService, DatabaseService, EmailService, ConfigService]
+      providers: [AuthService, DatabaseService, ConfigService]
     }).compile();
 
     service = module.get<AuthService>(AuthService);

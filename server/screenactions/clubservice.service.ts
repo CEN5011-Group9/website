@@ -1,35 +1,60 @@
 import { Injectable } from "@nestjs/common";
 import { DatabaseService } from "server/database/database.service";
 import { ClubDTO } from "./clubdto";
-import { Club } from "@prisma/client";
+import { Address, Club } from "@prisma/client";
+import { Query } from "@nestjs/common/decorators";
+import { UserService } from "./userservice.service";
 
 @Injectable()
 export class ClubService{
 
     constructor( private databaseservice : DatabaseService ) { }
 
-    async getClubDetails() : Promise<ClubDTO>{
-        /* 
-        //This is a code that attempts to get the club details from database using 
-        //The id (primary key ) from the club table. 
-        //The id or unique parameter will be sent as part of the parameter which we use to identify the object
-        //This is currently disabled to send out hardcoded data but will be the flow in the future 
-        let clubdetails = this.databaseservice.club.findUnique({
-            where: {
-                id
+    async getClubDetails( clubname : string ) : Promise<any>{
+        const clubs = this.databaseservice.club.findMany({
+            where: { name: clubname},
+            include: { address: true }
+        })
+
+        return clubs
+    }
+
+    async getUser( clubname: string, username : string ) : Promise<any> {
+        const user = await this.databaseservice.user.findMany({
+            where : { clubs: { some: { name: clubname  } } , email: username},
+            include : { clubs: true }
+        });
+
+        return user;
+    }
+
+    async getAllUsers( clubname: string ) : Promise<any> {
+        const allUsers = await this.databaseservice.user.findMany({
+            where : { clubs: { some : { name: clubname } } },
+            include : { clubs : true }
+        });
+
+        return allUsers;
+    }
+
+    async getAddress( clubname: string ) : Promise<any> {
+        const club = this.databaseservice.club.findUnique({
+            where: { name: clubname },
+            include: { address: true }
+        });
+
+        return club.address
+    }
+
+    async getAllClubs() : Promise<any> {
+        const allClubs = this.databaseservice.club.findMany({
+            include: { 
+                address: true
             }
         });
-        */
-        let clubdto = new ClubDTO();
-        clubdto.name = "RandomGuysClub";
-        clubdto.phone = "11111111111";
-        clubdto.email = "randomguy@gmail.com";
-        clubdto.description = "A place to get together and enjoy life";
-        clubdto.address.addressline1 = "Apartment 8";
-        clubdto.address.street = "12 North End Street";
-        clubdto.address.city = "Miami";
-        clubdto.address.state = "Florida";
-        clubdto.address.zipcode = "99999";
-        return clubdto;
+
+        return allClubs
     }
+
+
 }

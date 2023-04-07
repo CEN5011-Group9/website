@@ -1,5 +1,5 @@
 import { Controller, Request, Post, UseGuards, Body, Get } from '@nestjs/common';
-import { User, UserRole } from '@prisma/client';
+import { PrismaClient, User, UserRole } from '@prisma/client';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './local-auth.guard';
 import { Public } from '../public.decorator';
