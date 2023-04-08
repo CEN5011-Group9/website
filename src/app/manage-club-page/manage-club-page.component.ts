@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Club } from '../club';
+import { Club } from '../models/club';
 
 @Component({
   selector: 'app-manage-club-page',
@@ -19,7 +19,7 @@ export class ManageClubPageComponent {
     city : [this.club.city],
     state : [this.club.state]
   });
-    
+
   constructor(
     private readonly $router: Router,
     private readonly $http: HttpClient,

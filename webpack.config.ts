@@ -26,8 +26,6 @@ export default (
   _options: CustomWebpackBrowserSchema,
   targetOptions: TargetOptions
 ) => {
-  /* eslint @typescript-eslint/no-non-null-assertion: off */
-  config.output!.crossOriginLoading = 'anonymous';
 
   config.plugins?.push(
     // new DotenvPlugin({
@@ -93,11 +91,13 @@ export default (
 
     config.externalsPresets = { node: true };
 
-    (config.externals as Array<any>).push(
+    config.externals = [
       nodeExternals({
         allowlist: [/^(?!(livereload|concurrently|fsevents)).*/]
-      })
-    );
+      }),
+      /argon2/,
+      /node-gyp/
+    ];
 
     config.optimization = {
       minimize: config.mode === 'production',
@@ -135,8 +135,12 @@ export default (
             'bufferutil',
             'utf-8-validate',
             'graphql-ws',
+            'encoding',
             'ws',
-            'ts-morph'
+            'ts-morph',
+            'node-gyp',
+            '@mapbox/node-pre-gyp',
+            'bcrypt'
           ];
 
           if (!lazyImports.includes(resource)) {
@@ -150,9 +154,6 @@ export default (
           }
           return false;
         }
-      }),
-      new ProvidePlugin({
-        Promise: 'bluebird'
       })
     );
   }

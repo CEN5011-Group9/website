@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Club } from '../club';
+import { Club } from '../models/club';
 
 @Component({
   selector: 'app-view-search-results-page',

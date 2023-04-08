@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Club } from '../club';
+import { Club } from '../models/club';
 
 @Component({
   selector: 'app-club-details-page',
@@ -7,9 +7,9 @@ import { Club } from '../club';
   styleUrls: ['../styles.scss']
 })
 export class ClubDetailsPageComponent {
-  
+
   club : Club = { name: 'Rotary', link: 'https://www.rotary.org/en', hours: 2, type: "Social Service", city: "Miami", state: "Florida", zipcode: "33172"};
-  
+
   join(){
     let leaveElement = document != null ? document.getElementById("leavebutton") != null ? document.getElementById("leavebutton") : null : null;
     let joinElement = document != null ? document.getElementById("joinbutton") != null ? document.getElementById("joinbutton") : null : null;
@@ -25,7 +25,7 @@ export class ClubDetailsPageComponent {
     if( leaveElement !== null )
       leaveElement.style.display = "none";
     if( joinElement !== null )
-      joinElement.style.display = "block";    
+      joinElement.style.display = "block";
   }
 
   toggleMenu(){

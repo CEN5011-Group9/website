@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Club } from '../club';
+import { Club } from '../models/club';
 
 @Component({
   selector: 'app-view-club-contacts-page',

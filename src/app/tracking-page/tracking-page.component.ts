@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Club } from '../club';
+import { Club } from '../models/club';
 
 @Component({
   selector: 'app-tracking-page',
@@ -24,10 +24,10 @@ export class TrackingPageComponent implements OnInit{
   ngOnInit(): void{
     this.totalHours = this.clubs.reduce((acc, club) => acc + club.hours, 0)
   }
-  
 
-  constructor( 
-    private readonly $fb : FormBuilder, 
+
+  constructor(
+    private readonly $fb : FormBuilder,
     private readonly $http : HttpClient,
     private readonly $router : Router
     ) {}
@@ -52,5 +52,5 @@ export class TrackingPageComponent implements OnInit{
       }
   }
 
-  
+
 }

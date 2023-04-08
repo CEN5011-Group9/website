@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
@@ -35,7 +35,7 @@
 }
 
 .navbar .right-link a.active{
-   font-weight: bold; 
+   font-weight: bold;
 }
 
 .table-container{
@@ -71,7 +71,7 @@ body{
     transform: translate(-50%, -50%);
     background-color: aquamarine;
     align-items: center;
-    text-decoration: none;   
+    text-decoration: none;
 }
 .display-details{
     position: absolute;
@@ -101,10 +101,10 @@ body{
     margin: auto;
     background-color: floralwhite;
     align-items: center;
-    text-decoration: none;    
+    text-decoration: none;
 }
 .display-link{
-    
+
 }
 #leavebutton{
     display: none;
