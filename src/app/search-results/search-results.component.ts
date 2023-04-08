@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Club } from '../models/club';
 
 @Component({
-  selector: 'app-tracking-page',
-  templateUrl: './tracking-page.component.html',
-  styleUrls: ['./tracking-page.component.scss']
+  selector: 'app-search-results',
+  templateUrl: './search-results.component.html',
+  styleUrls: ['./search-results.component.scss']
 })
-export class TrackingPageComponent implements OnInit {
+export class SearchResultsComponent {
 
   public clubs : Club[] = [
     {
@@ -35,7 +35,7 @@ export class TrackingPageComponent implements OnInit {
     {
       name: 'ACM',
       link: 'https://www.acm.org/',
-      hours: 5,
+      hours: 5 ,
       type: "Social Service",
       city: "Miami",
       state: "Florida",
@@ -44,16 +44,8 @@ export class TrackingPageComponent implements OnInit {
     }
   ];
 
-  totalHours: number = 0;
-
   constructor(
-    private readonly $fb : FormBuilder,
-    private readonly $http : HttpClient,
-    private readonly $router : Router
-    ) {}
-
-
-  public ngOnInit(): void{
-    this.totalHours = this.clubs.reduce((acc, club) => acc + club.hours, 0)
-  }
+    private readonly $http: HttpClient,
+    private readonly $router: Router
+  ) {}
 }

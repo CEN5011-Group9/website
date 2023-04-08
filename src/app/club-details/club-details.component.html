@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-content">
+    <div class="display-name">{{club.name}}</div>
+    <div class="display-details">
+      <p>{{club.type}}</p>
+      <p>10</p>
+      <p>{{club.city}}</p>
+    </div>
+    <div class="display-buttons">
+      <button id="joinbutton" class="button is-primary" (click)="join()">Join</button>
+      <button class="button is-danger" id="leavebutton" (click)="leave()">Leave</button>
+      <br />
+      <a routerLink="/club-contacts">View Club Contacts Page</a>
+    </div>
+  </div>
+</div>

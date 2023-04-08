@@ -63,6 +63,7 @@ specifiers:
   bluebird: ^3.7.2
   bootstrap: ^5.2.3
   bufferutil: ^4.0.7
+  bulma: ^0.9.4
   cache-manager: ^5.2.0
   class-transformer: ^0.4.0
   class-validator: ^0.14.0
@@ -131,6 +132,7 @@ dependencies:
   bluebird: 3.7.2
   bootstrap: 5.2.3_@popperjs+core@2.11.7
   bufferutil: 4.0.7
+  bulma: 0.9.4
   cache-manager: 5.2.0
   class-transformer: 0.4.0
   class-validator: 0.14.0
@@ -6004,6 +6006,10 @@ packages:
     dependencies:
       semver: 7.3.8
     dev: true
+
+  /bulma/0.9.4:
+    resolution: {integrity: sha512-86FlT5+1GrsgKbPLRRY7cGDg8fsJiP/jzTqXXVqiUZZ2aZT8uemEOHlU1CDU+TxklPEZ11HZNNWclRBBecP4CQ==}
+    dev: false
 
   /busboy/1.6.0:
     resolution: {integrity: sha512-8SFQbg/0hQ9xy3UNTB0YEnsNBbWfhf7RtnzpL7TkBiTBRfrQ9Fxcnz7VJsleJpyp6rVLvXiuORqjlHi5q+PYuA==}

@@ -6,11 +6,11 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-search-page',
   templateUrl: './search-page.component.html',
-  styleUrls: ['../styles.scss']
+  styleUrls: ['./search-page.component.scss']
 })
 export class SearchPageComponent {
 
-  searchPageForm = this.$fb.group({
+  public searchPageForm = this.$fb.group({
     clubname : [''],
     clubtype : [''],
     city : [''],
@@ -24,21 +24,7 @@ export class SearchPageComponent {
     private readonly $router : Router
   ){ }
 
-  search(){
+  public search() {
 
   }
-
-  toggleMenu(){
-    console.log("Hello from toggleMenu()");
-    const x = document.getElementById("submenu");
-    console.log(x);
-    console.log(x?.style);
-      console.log(x?.style.display);
-      if( x?.style.display === "block" ){
-        x.style.display = "";
-      } else if( x?.style.display === "block" || x?.style.display === "" ) {
-        x.style.display = "block";
-      }
-  }
-
 }

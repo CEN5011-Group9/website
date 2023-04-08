@@ -1,4 +1,4 @@
-<form class="tracking-page-form" [formGroup]="searchPageForm" (submit)="search()" >
+<form class="tracking-page-form" [formGroup]="manageClubForm" (submit)="onSubmit()" >
   <div>
     <label for="clubname">Name: </label>
     <input
@@ -15,6 +15,15 @@
       name="clubtype"
       id="clubtype"
       formControlName="clubtype"
+    />
+  </div>
+  <div>
+    <label for="addressLine1">Address Line 1: </label>
+    <input
+      type="text"
+      name="addressLine1"
+      id="addressLine1"
+      formControlName="addressLine1"
     />
   </div>
   <div>
@@ -35,15 +44,6 @@
       formControlName="state"
     />
   </div>
-  <div>
-    <label for="zipcode">Zip Code: </label>
-    <input
-      type="text"
-      name="zipcode"
-      id="zipcode"
-      formControlName="zipcode"
-    />
-  </div>
-  <button class="button is-primary">Search</button>
+  <button class="updateButton">Update</button>
   <div class="error"></div>
 </form>

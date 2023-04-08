@@ -1,50 +1,67 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ClubDetailsPageComponent } from './club-details-page/club-details-page.component';
-import { ManageClubPageComponent } from './manage-club-page/manage-club-page.component';
+
+import { ClubDetailsComponent } from './club-details/club-details.component';
+import { ManageClubComponent } from './manage-club/manage-club.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { TrackingPageComponent } from './tracking-page/tracking-page.component';
-import { UserProfilePageComponent } from './user-profile-page/user-profile-page.component';
-import { ViewClubContactsPageComponent } from './view-club-contacts-page/view-club-contacts-page.component';
-import { ViewSearchResultsPageComponent } from './view-search-results-page/view-search-results-page.component';
-import { ViewUsersPageComponent } from './view-users-page/view-users-page.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ClubContactsComponent } from './club-contacts/club-contacts.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
+import { UsersComponent } from './users/users.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
-const routes: Routes = [{
-  path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
-},
-{
-  path: 'tracking-page', component: TrackingPageComponent
-},
-{
-  path: 'user-profile-page', component: UserProfilePageComponent
-},
-{
-  path: 'view-users-page', component:ViewUsersPageComponent
-},
-{
-  path: 'view-search-results-page', component:ViewSearchResultsPageComponent
-},
-{
-  path: 'welcome-page', component:WelcomePageComponent
-},
-{
-  path: 'view-club-contacts-page', component:ViewClubContactsPageComponent
-},
-{
-  path: 'manage-club-page', component:ManageClubPageComponent
-},
-{
-  path: 'club-details-page', component: ClubDetailsPageComponent
-},
-{
-  path: 'search-page', component: SearchPageComponent
-}];
+const routes: Routes = [
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
+  },
+  {
+    path: 'tracking-page',
+    component: TrackingPageComponent
+  },
+  {
+    path: 'user-profile',
+    component: UserProfileComponent
+  },
+  {
+    path: 'users',
+    component:UsersComponent
+  },
+  {
+    path: 'search-results', component:SearchResultsComponent
+  },
+  {
+    path: 'club-contacts',
+    component: ClubContactsComponent
+  },
+  {
+    path: 'manage-club',
+    component:ManageClubComponent
+  },
+  {
+    path: 'club-details',
+    component: ClubDetailsComponent
+  },
+  {
+    path: 'search-page',
+    component: SearchPageComponent
+  },
+  {
+    path: '**',
+    component:WelcomePageComponent
+  },
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    initialNavigation: 'enabledBlocking'
-})],
+  imports: [
+    RouterModule.forRoot(
+      routes,
+      {
+        initialNavigation: 'enabledBlocking'
+      }
+    )
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

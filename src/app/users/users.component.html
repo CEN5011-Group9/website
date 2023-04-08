@@ -1,0 +1,29 @@
+<table class="table">
+  <thead>
+    <tr>
+      <td>Name</td>
+      <td>Email</td>
+      <td>User Type</td>
+      <td>Phone Number</td>
+      <td>View Tracking</td>
+      <td>Update</td>
+      <td>Delete</td>
+    </tr>
+  </thead>
+  <tbody >
+    <tr *ngFor="let user of users">
+      <td>{{user.name}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.userType}}</td>
+      <td>{{user.phone}}</td>
+      <td>
+        <a class="button" routerLink="/tracking-page">View Tracking</a>
+      </td>
+      <td>
+        <button class="button is-success" type="submit" (submit)="update()">Update</button></td>
+      <td>
+        <button class="button is-danger" type="submit" (submit)="delete()">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

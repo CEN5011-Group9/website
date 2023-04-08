@@ -4,13 +4,13 @@ import { Form, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-user-profile-page',
-  templateUrl: './user-profile-page.component.html',
-  styleUrls: ['../styles.scss']
+  selector: 'app-user-profile',
+  templateUrl: './user-profile.component.html',
+  styleUrls: ['./user-profile.component.scss']
 })
-export class UserProfilePageComponent {
-  
-  public userProfilePageForm = this.$fb.group({
+export class UserProfileComponent {
+
+  public userProfileForm = this.$fb.group({
     name: ['', Validators.required],
     email: ['', Validators.required],
     phone: ['', Validators.required],
@@ -25,30 +25,17 @@ export class UserProfilePageComponent {
   ) {}
 
   onSubmit() {
-    
+
   }
 
   checkPasswordMatch( event: KeyboardEvent){
-    const newPassword = this.userProfilePageForm.get("newpassword")?.value
-    const confirmPassword = this.userProfilePageForm.get("confirmpassword")?.value
+    const newPassword = this.userProfileForm.get("newpassword")?.value
+    const confirmPassword = this.userProfileForm.get("confirmpassword")?.value
 
     if( newPassword == confirmPassword ){
       console.log("The passwords match");
     } else {
       console.log("The passwords do not match");
     }
-  }
-
-  toggleMenu(){
-    console.log("Hello from toggleMenu()");
-    const x = document.getElementById("submenu");
-    console.log(x);
-    console.log(x?.style);
-      console.log(x?.style.display);
-      if( x?.style.display === "block" ){
-        x.style.display = "";
-      } else if( x?.style.display === "block" || x?.style.display === "" ) {
-        x.style.display = "block";
-      }
   }
 }

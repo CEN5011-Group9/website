@@ -6,4 +6,5 @@ export interface Club {
   city: string;
   state: string;
   zipcode: string;
+  email: string;
 }

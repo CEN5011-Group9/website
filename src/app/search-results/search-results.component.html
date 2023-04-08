@@ -1,0 +1,26 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Club Name</th>
+      <th>Club Type</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip Code</th>
+      <th>View Club Details Page</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let club of clubs">
+      <td>1</td>
+      <td>{{club.name}}</td>
+      <td>{{club.type}}</td>
+      <td>{{club.city}}</td>
+      <td>{{club.state}}</td>
+      <td>{{club.zipcode}}</td>
+      <td>
+        <a routerLink="{{ club.link }}">{{club.link}}</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

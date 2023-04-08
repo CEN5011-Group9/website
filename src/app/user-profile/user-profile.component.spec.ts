@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ManageClubPageComponent } from './manage-club-page.component';
+import { UserProfileComponent } from './user-profile.component';
 
-describe('ManageClubPageComponent', () => {
-  let component: ManageClubPageComponent;
-  let fixture: ComponentFixture<ManageClubPageComponent>;
+describe('UserProfileComponent', () => {
+  let component: UserProfilePageComponent;
+  let fixture: ComponentFixture<UserProfilePageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ManageClubPageComponent ]
+      declarations: [ UserProfileComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ManageClubPageComponent);
+    fixture = TestBed.createComponent(UserProfileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
