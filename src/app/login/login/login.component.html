@@ -1,83 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Volunteer Club Finder</title>
-  <link rel="stylesheet" href="login.component.scss">
-</head>
-<body>
-  <header class="banner">
-    <h1>Volunteer Club Finder</h1>
-  </header>
-  <main class="main-content">
-    <section class="form-section">
-      <div class="form-container">
-        <div class="form-title">
-          <h2>Log In</h2>
-        </div>
-        <form [formGroup]="loginForm" (submit)="onSubmit()">
-          <div>
-            <label for="email">Email:</label>
-            <input type="text"
-              id="email"
-              name="email"
-              formControlName="email"
-              required
-            />
-          </div>
-          <div>
-            <label for="password">Password: </label>
-            <input type="password"
-              id="password"
-              name="password"
-              formControlName="password"
-              required
-            />
-          </div>
-          <button type="submit"
-            [disabled]="loginForm.invalid"
-          >Login</button>
-          <div class="errorLogin"></div>
-        </form>
-      </div>
-      <div class="form-container">
-        <div class="form-title">
-          <h2>Register</h2>
-        </div>
-        <form [formGroup]="registrationPageForm" (submit)="register()">
-          <div>
-            <label for="email">Email</label>
-            <input type="text" id="email" name="email" formControlName="email" required />
-          </div>
-          <div>
-            <label for="firstName">First Name</label>
-            <input type="text" id="firstName" name="firstName" formControlName="firstName" required />
-          </div>
-          <div>
-            <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" name="lastName" formControlName="lastName" required />
-          </div>
-          <div>
-            <label for="phoneNumber">Phone Number</label>
-            <input type="text" id="phoneNumber" name="phoneNumber" formControlName="phoneNumber" required />
-          </div>
-          <div>
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" formControlName="password" required />
-          </div>
-          
-          <div class="checkbox-container">
-            Check this box if registering as a club representative.
-            <label class="checkbox-label">
-              <input type="checkbox" id="check" name="check" class="checkbox" checked>
-            </label>
-          </div>
-          <button type="submit" [disabled]="registrationPageForm.invalid">Register</button>
-          <div class="errorRegister"></div>
-        </form>
-      </div>
-    </section>
-  </main>
-</body>
-</html>
+<form [formGroup]="loginForm" (submit)="onSubmit()">
+  <div>
+    <label for="email">Email:</label>
+    <input type="text"
+      id="email"
+      name="email"
+      formControlName="email"
+      required
+    />
+  </div>
+  <div>
+    <label for="password">Password: </label>
+    <input type="password"
+      id="password"
+      name="password"
+      formControlName="password"
+      required
+    />
+  </div>
+  <button type="submit"
+    [disabled]="loginForm.invalid"
+  >Login</button>
+  <div class="errorLogin"></div>
+</form>
+<div class="form-container">
+  <div class="form-title">
+    <h2>Register</h2>
+  </div>
+  <form [formGroup]="registrationPageForm" (submit)="register()">
+    <div>
+      <label for="email">Email</label>
+      <input type="text" id="email" name="email" formControlName="email" required />
+    </div>
+    <div>
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" name="firstName" formControlName="firstName" required />
+    </div>
+    <div>
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" name="lastName" formControlName="lastName" required />
+    </div>
+    <div>
+      <label for="phoneNumber">Phone Number</label>
+      <input type="text" id="phoneNumber" name="phoneNumber" formControlName="phoneNumber" required />
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" formControlName="password" required />
+    </div>
+
+    <div class="checkbox-container">
+      Check this box if registering as a club representative.
+      <label class="checkbox-label">
+        <input type="checkbox" id="check" name="check" class="checkbox" checked>
+      </label>
+    </div>
+    <button type="submit" [disabled]="registrationPageForm.invalid">Register</button>
+    <div class="errorRegister"></div>
+  </form>
+</div>
