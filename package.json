@@ -125,5 +125,8 @@
     "@wessberg/ts-evalutator": "npm:ts-evalutator",
     "@angular-devkit/build-angular": "^15.2.5",
     "core-js": "^3.30.0"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
   }
 }

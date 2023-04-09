@@ -17,30 +17,38 @@ enum UserRole {
 }
 
 model User {
-  id           String   @id @db.Uuid
+  id           String   @id @default(uuid()) @db.Uuid
   email        String   @unique
   passwordHash String
   role         UserRole @default(User)
-  clubs        Club[] @relation("ClubUsers")
+  clubs        Club[]   @relation("ClubUsers")
+
+  @@map("users")
 }
 
 model Club {
-  id      String @id @db.Uuid
-  name    String @unique
-  users   User[] @relation("ClubUsers")
-  phone String @unique
-  email String @unique
+  id          String @id @default(uuid()) @db.Uuid
+  name        String @unique
+  link        String
+  phone       String @unique
+  users       User[] @relation("ClubUsers")
+  email       String @unique
   description String
-  address Address @relation(fields: [addressId], references: [id])
-  addressId String @db.Uuid
+  type        String
+
+  address   Address @relation(fields: [addressId], references: [id])
+  addressId String  @db.Uuid
+
+  @@map("clubs")
 }
 
-model Address{
-  id String @id @db.Uuid
-  addressline1 String
-  street String
-  city String
-  state String
-  zipcode String 
-  clubs Club[]
+model Address {
+  id      String @id @default(uuid()) @db.Uuid
+  street  String @unique
+  city    String
+  state   String
+  zipcode String
+  clubs   Club[]
+
+  @@map("addresses")
 }

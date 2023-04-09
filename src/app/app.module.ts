@@ -10,12 +10,11 @@ import { TrackingPageComponent } from './tracking-page/tracking-page.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UsersComponent } from './users/users.component';
 import { LoginModule } from './login/login.module';
-import { SearchResultsComponent } from './search-results/search-results.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { ClubContactsComponent } from './club-contacts/club-contacts.component';
 import { ManageClubComponent } from './manage-club/manage-club.component';
 import { ClubDetailsComponent } from './club-details/club-details.component';
-import { SearchPageComponent } from './search-page/search-page.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +22,11 @@ import { SearchPageComponent } from './search-page/search-page.component';
     TrackingPageComponent,
     UserProfileComponent,
     UsersComponent,
-    SearchResultsComponent,
     WelcomePageComponent,
     ClubContactsComponent,
     ManageClubComponent,
     ClubDetailsComponent,
-    SearchPageComponent
+    SearchComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

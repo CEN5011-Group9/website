@@ -1,0 +1,46 @@
+<section class="section" id="search-form">
+  <form class="form" [formGroup]="searchForm" (submit)="search()" >
+    <div>
+      <label for="name">Name: </label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        formControlName="name"
+      />
+    </div>
+    <button class="button is-primary">Search</button>
+    <div class="error"></div>
+  </form>
+</section>
+<section class="section" id="results">
+  <div *ngIf="searchSubscription">
+    <div *ngFor="let club of searchSubscription | async">
+      <div class="card">
+        <div class="card-header">
+          <p class="card-header-title">{{ club.name }}</p>
+        </div>
+        <div class="card-content">
+          <p>{{ club.description }}<p>
+          <p>
+          </p>
+          <address>
+            <p>
+              {{ club.address.street }}
+              <br />
+              {{ club.address.city }}, {{ club.address.state }} {{ club.address.zipcode }}
+            </p>
+            <p>
+              <a href="{{club.link}}">{{ club.link }}</a>
+            </p>
+            <p>{{ club.phone }}</p>
+            <p>
+              <a href="mailto:{{club.email}}">{{ club.email }}</a>
+            </p>
+          </address>
+        </div>
+      </div>
+      <br />
+    </div>
+  </div>
+</section>

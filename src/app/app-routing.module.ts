@@ -3,11 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ClubDetailsComponent } from './club-details/club-details.component';
 import { ManageClubComponent } from './manage-club/manage-club.component';
-import { SearchPageComponent } from './search-page/search-page.component';
+import { SearchComponent } from './search/search.component';
 import { TrackingPageComponent } from './tracking-page/tracking-page.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ClubContactsComponent } from './club-contacts/club-contacts.component';
-import { SearchResultsComponent } from './search-results/search-results.component';
 import { UsersComponent } from './users/users.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
@@ -29,9 +28,6 @@ const routes: Routes = [
     component:UsersComponent
   },
   {
-    path: 'search-results', component:SearchResultsComponent
-  },
-  {
     path: 'club-contacts',
     component: ClubContactsComponent
   },
@@ -44,13 +40,18 @@ const routes: Routes = [
     component: ClubDetailsComponent
   },
   {
-    path: 'search-page',
-    component: SearchPageComponent
+    path: 'search',
+    component: SearchComponent
   },
   {
-    path: '**',
-    component:WelcomePageComponent
+    path: 'welcome-page',
+    component: WelcomePageComponent
   },
+  // {
+  //   path: '',
+  //   redirectTo: 'welcome-page',
+  //   pathMatch: 'full'
+  // }
 ];
 
 @NgModule({
@@ -58,7 +59,7 @@ const routes: Routes = [
     RouterModule.forRoot(
       routes,
       {
-        initialNavigation: 'enabledBlocking'
+        initialNavigation: 'enabledBlocking',
       }
     )
   ],

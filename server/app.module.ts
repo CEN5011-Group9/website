@@ -9,6 +9,8 @@ import { AuthModule } from './auth/auth.module';
 
 import { DatabaseService } from './database/database.service';
 
+import { SearchModule } from './search/search.module';
+
 @Module({
   imports: [
     AngularUniversalModule.forRoot({
@@ -16,9 +18,13 @@ import { DatabaseService } from './database/database.service';
       viewsPath: join(process.cwd(), 'dist/website/browser')
     }),
     ConfigModule.forRoot(),
-    AuthModule
+    AuthModule,
+    SearchModule
   ],
   providers: [
+    DatabaseService
+  ],
+  exports: [
     DatabaseService
   ]
 })

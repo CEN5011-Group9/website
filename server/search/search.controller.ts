@@ -10,42 +10,21 @@ export class SearchController {
   constructor(private readonly $database: DatabaseService) {}
 
   @Public()
-  @Get('club')
+  @Get('clubs')
   public async searchClub(
-    @Query('name') clubName: string,
-    @Query('type') clubType: string,
-    @Query('city') city: string,
-    @Query('state') state: string,
-    @Query('zipcode') zipcode: string
+    @Query('name') name: string
   ): Promise<Club[]> {
-    const where : { [key: string]: any} = {
-      where: {
-        name: {
-          contains: clubName
-        }, 
-        type: {
-          contains: clubType
-        },
-        city: {
-          contains: city
-        },
-        state: {
-          contains: state
-        },
-        zipcode: {
-          contains: zipcode
-        }
-      }
-    };
-
-    Object.keys(where).forEach(key=>{
-      if( !where[key]){
-        delete where[key];
-      }
-    })
 
     return await this.$database.club.findMany({
-      where: where
+      where: {
+        name: {
+          contains: name,
+          mode: 'insensitive'
+        }
+      },
+      include: {
+        address: true
+      }
     });
   }
 }
