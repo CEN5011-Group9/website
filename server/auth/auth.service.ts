@@ -37,7 +37,7 @@ export class AuthService {
 
   public async login(user: User): Promise<{ accessToken: string }> {
     const payload = {
-      username: user.email,
+      email: user.email,
       sub: user.id
     };
 

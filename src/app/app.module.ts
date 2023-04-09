@@ -15,6 +15,7 @@ import { ClubContactsComponent } from './club-contacts/club-contacts.component';
 import { ManageClubComponent } from './manage-club/manage-club.component';
 import { ClubDetailsComponent } from './club-details/club-details.component';
 import { SearchComponent } from './search/search.component';
+import { UserService } from './user.service';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { SearchComponent } from './search/search.component';
     LoginModule
   ],
   providers: [
+    UserService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthHeaderInterceptor,

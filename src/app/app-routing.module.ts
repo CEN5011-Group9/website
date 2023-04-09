@@ -47,11 +47,11 @@ const routes: Routes = [
     path: 'welcome-page',
     component: WelcomePageComponent
   },
-  // {
-  //   path: '',
-  //   redirectTo: 'welcome-page',
-  //   pathMatch: 'full'
-  // }
+  {
+    path: '',
+    redirectTo: 'welcome-page',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({

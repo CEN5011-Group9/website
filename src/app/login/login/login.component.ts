@@ -9,6 +9,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from '../../user.service';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,8 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   @ViewChild('errorLogin', { static: false }) private errorDiv!: ElementRef;
   @ViewChild('errorRegister', { static: false }) private errorDivReg!: ElementRef;
+
+  public active = 'login';
 
   public loginForm = this.$fb.group({
     email: ['', Validators.required, Validators.email],
@@ -36,31 +39,46 @@ export class LoginComponent {
     @Inject(PLATFORM_ID) private readonly $platformId: any,
     private readonly $router: Router,
     private readonly $http: HttpClient,
-    private readonly $fb: FormBuilder
+    private readonly $fb: FormBuilder,
+    private readonly $userService: UserService
   ) {}
 
-  onSubmit() {
+  public toggle(tab: string) {
+    this.active = tab;
+  }
+
+  public onSubmit() {
     this.$http.post<{ accessToken: string}>(
       '/api/auth/login',
       this.loginForm.value
     )
-    .subscribe({
-      next: (data: { accessToken: string }) => {
-        if (isPlatformBrowser(this.$platformId)) {
-          window.localStorage.setItem('accessToken', data.accessToken);
-
-          this.$router.navigateByUrl('/');
+      .subscribe({
+        next: (data: { accessToken: string }) => {
+          if (isPlatformBrowser(this.$platformId)) {
+            window.localStorage.setItem('accessToken', data.accessToken);
+          }
+          this.$http.get<any>(
+            '/api/user'
+          )
+            .subscribe({
+              next: (data: any) => {
+                this.$userService.update(data);
+                return this.$router.navigateByUrl('/welcome-page');
+              },
+              error: (error: Error) => {
+                console.error(error)
+              }
+            })
+        },
+        error: (error: any) => {
+          if (isPlatformBrowser(this.$platformId)) {
+            this.errorDiv.nativeElement.text = error;
+          }
         }
-      },
-      error: (error: any) => {
-        if (isPlatformBrowser(this.$platformId)) {
-          this.errorDiv.nativeElement.text = error;
-        }
-      }
-    });
+      });
   }
 
-  register(){
+  public onRegister() {
     this.$http.post<{ accessToken: string}>(
       '/api/auth/register',
       this.registrationPageForm.value
