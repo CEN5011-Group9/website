@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = "postgres://postgres:admin@localhost:5432/postgres"
 }
 
 enum UserRole {
@@ -22,6 +22,9 @@ model User {
   passwordHash String
   role         UserRole @default(User)
   clubs        Club[]   @relation("ClubUsers")
+  firstName    String   @default("")
+  lastName     String   @default("")
+  phoneNumber  String   @default("")
 
   @@map("users")
 }
@@ -47,7 +50,7 @@ model Address {
   street  String @unique
   city    String
   state   String
-  zipcode String
+  zipcode String 
   clubs   Club[]
 
   @@map("addresses")

@@ -7,17 +7,17 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let club of clubs">
+    <tr *ngFor="let club of clubDetails">
       <td>{{club.name}}</td>
       <td>
-        <a routerLink="{{ club.link }}">{{ club.link }}</a>
+        <a routerLink="{{ club.link }}">View Club Details Page</a>
       </td>
-      <td>{{club.hours}}</td>
+      <td>{{club.email}}</td>
     </tr>
-    <tr>
+    <!-- <tr>
       <td>Total Hours: </td>
       <td> </td>
-      <td>{{totalHours}}</td>
-    </tr>
+      <td>10</td>
+    </tr> -->
   </tbody>
 </table>

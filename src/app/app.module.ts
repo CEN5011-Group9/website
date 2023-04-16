@@ -16,6 +16,8 @@ import { ManageClubComponent } from './manage-club/manage-club.component';
 import { ClubDetailsComponent } from './club-details/club-details.component';
 import { SearchComponent } from './search/search.component';
 import { UserService } from './user.service';
+import { ViewClubsComponent } from './view-clubs/view-clubs.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { UserService } from './user.service';
     ClubContactsComponent,
     ManageClubComponent,
     ClubDetailsComponent,
-    SearchComponent
+    SearchComponent,
+    ViewClubsComponent,
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

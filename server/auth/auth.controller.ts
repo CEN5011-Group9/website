@@ -4,6 +4,7 @@ import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './local-auth.guard';
 import { Public } from '../public.decorator';
 import { DatabaseService } from '../database/database.service';
+import { UserDetailDTO } from 'server/models/UserDetailDTO';
 
 @Controller('auth')
 export class AuthController {
@@ -13,10 +14,11 @@ export class AuthController {
   ) {}
 
   @Public()
-  @UseGuards(LocalAuthGuard)
+  //@UseGuards(LocalAuthGuard)
   @Post('login')
-  public async login(@Request() request: any): Promise<any> {
-    return this.$authService.login(request.user);
+  public async login(@Body() request: UserDetailDTO): Promise<any> {
+    console.log("The control entered the login flow in the auth.controller.ts class and the request is "+request )
+    return this.$authService.login(request);
   }
 
   /**
@@ -30,10 +32,10 @@ export class AuthController {
   @Public()
   @Post('register')
   public async register(
-    @Body('userInput') userInput: User,
-    @Body('password') password: string
+    @Body() userInput: UserDetailDTO
   ): Promise<any> {
-    return this.$authService.register(userInput, password);
+    console.log("Entered the user controller for registration call")
+    return this.$authService.register(userInput);
   }
 
   @Public()

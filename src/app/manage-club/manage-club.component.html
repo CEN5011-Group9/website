@@ -1,29 +1,62 @@
-<form class="tracking-page-form" [formGroup]="manageClubForm" (submit)="onSubmit()" >
+<form class="tracking-page-form" [formGroup]="manageClubForm" (submit)="updateCall()" >
   <div>
-    <label for="clubname">Name: </label>
+    <label for="name">Name: </label>
     <input
       type="text"
-      name="clubname"
-      id="clubname"
-      formControlName="clubname"
+      name="name"
+      id="name"
+      formControlName="name"
+      placeholder="{{clubDetails.name}}"
     />
   </div>
   <div>
-    <label for="clubtype">Type: </label>
+    <label for="type">Type: </label>
     <input
       type="text"
-      name="clubtype"
-      id="clubtype"
-      formControlName="clubtype"
+      name="type"
+      id="type"
+      formControlName="type"
+      placeholder="{{clubDetails.type}}"
     />
   </div>
   <div>
-    <label for="addressLine1">Address Line 1: </label>
+    <label for="description">Description: </label>
     <input
       type="text"
-      name="addressLine1"
-      id="addressLine1"
-      formControlName="addressLine1"
+      name="description"
+      id="description"
+      formControlName="description"
+      placeholder="{{clubDetails.description}}"
+    />
+  </div>
+  <div>
+    <label for="phone">Phone: </label>
+    <input
+      type="text"
+      name="phone"
+      id="phone"
+      formControlName="phone"
+      placeholder="{{clubDetails.phone}}"
+    />
+  </div>
+  <div>
+    <label for="email">Email: </label>
+    <input
+      type="text"
+      name="email"
+      id="email"
+      formControlName="email"
+      placeholder="{{clubDetails.email}}"
+    />
+  </div>
+  <div>
+    <label for="street">Address Line 1: </label>
+    <input
+      type="text"
+      name="street"
+      id="street"
+      formControlName="street"
+      placeholder="{{addressDetails.street}}"
     />
   </div>
   <div>
@@ -33,6 +66,7 @@
       name="city"
       id="city"
       formControlName="city"
+      placeholder="{{addressDetails.city}}"
     />
   </div>
   <div>
@@ -42,6 +76,17 @@
       name="state"
       id="state"
       formControlName="state"
+      placeholder="{{addressDetails.state}}"
+    />
+  </div>
+  <div>
+    <label for="zipcode">Zipcode: </label>
+    <input
+      type="text"
+      name="zipcode"
+      id="zipcode"
+      formControlName="zipcode"
+      placeholder="{{addressDetails.zipcode}}"
     />
   </div>
   <button class="updateButton">Update</button>

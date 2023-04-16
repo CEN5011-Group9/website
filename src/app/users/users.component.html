@@ -1,7 +1,8 @@
 <table class="table">
   <thead>
     <tr>
-      <td>Name</td>
+      <td>First Name</td>
+      <td>Last Name</td>
       <td>Email</td>
       <td>User Type</td>
       <td>Phone Number</td>
@@ -11,18 +12,19 @@
     </tr>
   </thead>
   <tbody >
-    <tr *ngFor="let user of users">
-      <td>{{user.name}}</td>
+    <tr *ngFor="let user of userDetails">
+      <td>{{user.firstName}}</td>
+      <td>{{user.lastName}}</td>
       <td>{{user.email}}</td>
-      <td>{{user.userType}}</td>
-      <td>{{user.phone}}</td>
+      <td>{{user.role}}</td>
+      <td>{{user.phoneNumber}}</td>
       <td>
-        <a class="button" routerLink="/tracking-page">View Tracking</a>
+        <a class="button" [routerLink]="['/tracking-page', user]">View Tracking</a>
       </td>
       <td>
-        <button class="button is-success" type="submit" (submit)="update()">Update</button></td>
+        <a class="button" [routerLink]="['/update-user', user]">Update</a>
       <td>
-        <button class="button is-danger" type="submit" (submit)="delete()">Delete</button>
+        <button class="button is-danger" type="submit" (click)="delete(user)">Delete</button>
       </td>
     </tr>
   </tbody>

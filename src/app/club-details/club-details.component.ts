@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Club } from '../models/club';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-club-details',
@@ -7,6 +9,18 @@ import { Club } from '../models/club';
   styleUrls: ['./club-details.component.scss']
 })
 export class ClubDetailsComponent {
+
+  constructor( private readonly router : ActivatedRoute ) { }
+
+  clubDetails : any
+
+  ngOnInit(){
+    console.log("The log is "+ this.router.queryParams)
+    if( this.router.queryParams !== undefined )  //Doubt #1 - How to handle this
+      this.router.queryParams.subscribe( params=> {
+        this.clubDetails = JSON.parse(params['club']);
+      })
+  }
 
   public club : Club = {
     name: 'Rotary',
@@ -16,7 +30,8 @@ export class ClubDetailsComponent {
     city: "Miami",
     state: "Florida",
     zipcode: "33172",
-    email: ""
+    email: "",
+    addressId: ""
   };
 
   public join(){
@@ -26,6 +41,7 @@ export class ClubDetailsComponent {
     //   leaveElement.style.display = "block";
     // if( joinElement !== null )
     //   joinElement.style.display = "none";
+
   }
 
   public leave(){
@@ -35,5 +51,10 @@ export class ClubDetailsComponent {
     //   leaveElement.style.display = "none";
     // if( joinElement !== null )
     //   joinElement.style.display = "block";
+
+  }
+
+  public stringify(){
+    return JSON.stringify(this.club);
   }
 }

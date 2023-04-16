@@ -3,7 +3,7 @@
     <a class="navbar-item" routeLink="/">Website</a>
   </div>
   <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-    <span aria-hidden="true"></span>
+    <span aria-hidden="true">{{$userService.user}}</span>
     <span aria-hidden="true"></span>
     <span aria-hidden="true"></span>
   </a>
@@ -27,7 +27,7 @@
     </div>
     <div class="navbar-end">
       <div class="navbar-item">
-        <a routerLink="/club-details">View Clubs</a>
+        <a routerLink="/view-clubs">View Clubs</a>
       </div>
       <div class="navbar-item">
         <a routerLink="/users">View Users</a>

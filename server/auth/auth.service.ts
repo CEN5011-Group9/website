@@ -11,13 +11,16 @@ import * as argon2 from 'argon2';
 import { DatabaseService } from '../database/database.service';
 import { User } from '@prisma/client';
 import { AuthResponse } from './auth-response';
+import { UserService } from 'server/user/user.service';
+import { UserDetailDTO } from 'server/models/UserDetailDTO';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly $databaseService: DatabaseService,
     private readonly $jwtService: JwtService,
-    private readonly $configService: ConfigService
+    private readonly $configService: ConfigService,
+    private readonly $userService: UserService
   ) {}
 
   public async validateUser(email: string, password: string): Promise<any> {
@@ -35,21 +38,41 @@ export class AuthService {
     return null;
   }
 
-  public async login(user: User): Promise<{ accessToken: string }> {
-    const payload = {
-      email: user.email,
-      sub: user.id
-    };
+  public async login(user: UserDetailDTO): Promise<User | null> {
 
-    return {
-      accessToken: this.$jwtService.sign(payload)
-    };
+    //console.log("The details of the user are " + JSON.stringify(user))
+    console.log("The user details are " + user.email + " " + user.password)
+
+    const userDetail = await this.$databaseService.user.findUnique({
+      where: {
+        email : user.email
+      },
+      include: {
+        clubs: true
+      }
+    });
+
+    if (!userDetail) {
+      throw new UnauthorizedException(
+        'User could not be found in the database'
+      );
+    }
+
+    if ( userDetail.passwordHash === user.password ) {
+      return userDetail
+    } else {
+      console.log("The password at the Database " + userDetail.passwordHash  + " and the password at the request is " + user.password)
+      throw new UnauthorizedException("User's password did not match");
+    }
+
+    return userDetail
   }
 
   public async loginGraphQL(
     email: string,
     password: string
   ): Promise<AuthResponse> {
+
     const user = await this.$databaseService.user.findUnique({
       where: {
         email
@@ -81,9 +104,13 @@ export class AuthService {
   }
 
   public async register(
-    input: User,
-    password: string
-  ): Promise<any> {
+    input: UserDetailDTO
+  ): Promise<User | null> {
+
+    //let userString = JSON.stringify(input)
+    console.log("The input parameter(User data from front-end) is " + input)
+    console.log("The email in the request is " + input.email)
+
     let check = await this.$databaseService.user.findMany({
       where: {
         OR: [
@@ -102,42 +129,19 @@ export class AuthService {
     }
 
     //Email is in use
+    console.log("The email in the DB is " + check[0]?.email)
+    console.log("The email in the request is " + input.email)
+
     if (check[0]?.email === input.email) {
       throw new NotAcceptableException(
         'This email address is already registered'
       );
     }
 
-    const passwordHash = await argon2.hash(password);
+    //const passwordHash = await argon2.hash(password);
 
-    const newUser = {
-      ...input,
-      passwordHash
-    };
+    return this.$userService.createUser(input)
 
-    let user = await this.$databaseService.user.create({
-      data: newUser
-    });
-
-    const sha1 = createHash('sha1');
-
-    const registrationCode = sha1
-      .update(
-        JSON.stringify({
-          id: user.id,
-          email: user.email
-        })
-      )
-      .digest('hex');
-
-    const payload = {
-      email: user.email,
-      sub: user.id
-    };
-
-    return {
-      accessToken: this.$jwtService.sign(payload)
-    };
   }
 
   public async verify(userId: string, code: string): Promise<boolean> {

@@ -13,6 +13,11 @@ import { DatabaseService } from './database/database.service';
 import { SearchModule } from './search/search.module';
 import { UserController } from './user/user.controller';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
+import { ClubController } from './club/club.controller';
+import { UserService } from './user/user.service';
+import { ClubService } from './club/club.service';
+import { AddressController } from './address/address.controller';
+import { AddressService } from './address/address.service';
 
 @Module({
   imports: [
@@ -25,10 +30,15 @@ import { JwtAuthGuard } from './auth/jwt-auth.guard';
     SearchModule
   ],
   controllers: [
-    UserController
+    UserController,
+    ClubController,
+    AddressController
   ],
   providers: [
     DatabaseService,
+    UserService,
+    ClubService,
+    AddressService
     // {
     //   provide: APP_GUARD,
     //   useClass: JwtAuthGuard

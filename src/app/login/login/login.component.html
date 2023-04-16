@@ -65,7 +65,7 @@
       <div class="checkbox-container">
         Check this box if registering as a club representative.
         <label class="checkbox-label">
-          <input type="checkbox" id="check" name="check" class="checkbox" checked>
+          <input type="checkbox" id="check" name="check" class="checkbox" formControlName="isClubRep" checked>
         </label>
       </div>
       <button type="submit" [disabled]="registrationPageForm.invalid">Register</button>

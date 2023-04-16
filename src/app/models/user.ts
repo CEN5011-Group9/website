@@ -1,6 +1,11 @@
+import { Club } from "./club"
+
 export interface User{
-    name : String,
-    phone : String,
-    userType: String,
-    email: String
+    id : String,
+    firstName : String,
+    lastName : String,
+    phoneNumber : String,
+    role: String,
+    email: String,
+    clubs: Club[]
 }

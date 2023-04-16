@@ -11,6 +11,7 @@ import { AuthService } from './auth.service';
 import { JwtStrategy } from './jwt.strategy';
 import { LocalStrategy } from './local.strategy';
 import { CaslAbilityFactory } from './casl-ability.factory';
+import { UserService } from 'server/user/user.service';
 
 @Module({
   imports: [
@@ -33,7 +34,8 @@ import { CaslAbilityFactory } from './casl-ability.factory';
     DatabaseService,
     LocalStrategy,
     JwtStrategy,
-    CaslAbilityFactory
+    CaslAbilityFactory,
+    UserService
   ],
   exports: [AuthService, CaslAbilityFactory]
 })

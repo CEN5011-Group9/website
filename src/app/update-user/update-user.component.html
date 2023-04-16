@@ -1,0 +1,44 @@
+<form class="" [formGroup]="updateClubApiForm" (submit)="updateUser()">
+    <div>
+        <label for="email" >Email:</label>
+        <input
+            type="text"
+            name="email"
+            id="email"
+            formControlName="email"
+            placeholder="{{userDetails.email}}"
+        />
+    </div>
+    <div>
+        <label for="firstName">First Name:</label>
+        <input
+            type="text"
+            id="firstName"
+            name="firstName"
+            formControlName="firstName"
+            placeholder="{{userDetails.firstName}}"
+        />
+    </div>
+    <div>
+        <label for="lastName">Last Name:</label>
+        <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            formControlName="lastName"
+            placeholder="{{userDetails.lastName}}"
+        />
+    </div>
+    <div>
+        <label for="phoneNumber" >Phone Number:</label>
+        <input
+            type="text"
+            id="phoneNumber"
+            name="phoneNumber"
+            formControlName="phoneNumber"
+            placeholder="{{userDetails.phoneNumber}}"
+        />
+    </div>
+    <button class="updateButton">Update</button>
+    <div class="error"></div>
+</form>

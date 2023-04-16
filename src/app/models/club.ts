@@ -7,4 +7,5 @@ export interface Club {
   state: string;
   zipcode: string;
   email: string;
+  addressId: string;
 }
