@@ -78,4 +78,32 @@ export class UsersComponent {
       })
 
   }
+
+  public removeUser( user: any ){
+    console.log("The code flow has entered removeUser() in users.component.ts file ")
+    console.log("The mail id of the user is "+ user.email)
+
+    let removeApiPath = "http://localhost:4200/api/club/remove/" + user.email
+
+    let clubNames : string[] = []
+    this.userTempDetails.user.clubs.forEach( (club:any) => {
+      clubNames.push(club.email)
+    })
+
+    let clubNamesRequest = { "clubnames" : clubNames }
+
+    this.$http.put(
+      removeApiPath,
+      clubNamesRequest
+    ).subscribe({
+      next : (data : any) => {
+        console.log("The data in removeUser() in users.component.ts file is " + data)
+      },
+      error : (err : any) => {
+        console.log("The error in removeUser() in users.component.ts file is " + err)
+      }
+    })
+    
+
+  }
 }

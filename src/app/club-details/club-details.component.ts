@@ -28,6 +28,10 @@ export class ClubDetailsComponent {
     return "http://localhost:4200/api/address/" + addressId
   }
 
+  userTempDetailsString = localStorage.getItem('userDetails') as string
+
+  userTempDetails : any = JSON.parse(this.userTempDetailsString)
+
   ngOnInit(){
     console.log("The code flow is entering ngOnInit() in club-details.component.ts "+ this.router.queryParams)
     //if( this.router.queryParams !== undefined )  //Doubt #1 - How to handle this
@@ -61,6 +65,14 @@ export class ClubDetailsComponent {
   
   }
 
+  findJoinClubApiPath( userName : string, clubName : string ) : string {
+    return "http://localhost:4200/api/club/join/" + userName + "/" + clubName
+  }
+
+  findRemoveClubApiPath( userName : string, clubName : string ) : string {
+    return "http://localhost:4200/api/club/remove/" + userName + "/" + clubName
+  }
+
   public join(){
     // let leaveElement = document != null ? document.getElementById("leavebutton") != null ? document.getElementById("leavebutton") : null : null;
     // let joinElement = document != null ? document.getElementById("joinbutton") != null ? document.getElementById("joinbutton") : null : null;
@@ -68,6 +80,19 @@ export class ClubDetailsComponent {
     //   leaveElement.style.display = "block";
     // if( joinElement !== null )
     //   joinElement.style.display = "none";
+    let joinClubApiPath = this.findJoinClubApiPath(this.userTempDetails.user.email, this.clubDetails.email)
+
+    this.$http.put(
+      joinClubApiPath,
+      ""
+    ).subscribe({
+      next : (data:any) =>{
+        console.log("The join() method in club-details.component.ts class is completed - the updated user details are" + JSON.stringify(data))
+      },
+      error : (err:any) =>{
+        console.log("The error method in club-details.component.ts class is completed" + err)
+      }
+    })
 
   }
 
@@ -78,6 +103,20 @@ export class ClubDetailsComponent {
     //   leaveElement.style.display = "none";
     // if( joinElement !== null )
     //   joinElement.style.display = "block";
+
+    let removeClubApiPath = this.findRemoveClubApiPath(this.userTempDetails.user.email, this.clubDetails.email)
+
+    this.$http.put(
+      removeClubApiPath,
+      ""
+    ).subscribe({
+      next : (data:any) =>{
+        console.log("The join() method in club-details.component.ts class is completed - the updated user details are" + JSON.stringify(data))
+      },
+      error : (err:any) =>{
+        console.log("The error method in club-details.component.ts class is completed" + err)
+      }
+    })
 
   }
 
