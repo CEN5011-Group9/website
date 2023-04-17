@@ -8,30 +8,26 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./club-contacts.component.scss']
 })
 export class ClubContactsComponent {
-  public club : Club = {
-    name: 'ShoppersStop',
-    link: 'https://www.rotary.org/en',
-    hours: 2,
-    type: "Social Service",
-    city: "Tampa",
-    state: "New York",
-    zipcode: "56789",
-    email: "",
-    addressId: ""
-  };
+  
+  clubDetails : any
 
-  clubFromClubDetails: any;
+  addressDetails : any
 
   constructor( private router : ActivatedRoute ){ }
 
   ngOnInit(){
-    this.router.queryParams.subscribe( params=> {
-      this.clubFromClubDetails = JSON.parse(params['club']);
+    this.router.params.subscribe( params=> {
+      console.log("The club details parameter is " + params)
+      console.log("The club details parameter in String format is " + JSON.stringify(params))
+
+      this.clubDetails = params
+      /*
+      this.clubDetails = JSON.parse(params['clubDetails'])
+      this.addressDetails = JSON.parse(params['addressDetails'])
+      */
     })
   }
 
-  public stringify(){
-    return JSON.stringify(this.club);
-  }
+  
 
 }

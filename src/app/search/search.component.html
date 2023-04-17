@@ -31,7 +31,7 @@
               {{ club.address.city }}, {{ club.address.state }} {{ club.address.zipcode }}
             </p>
             <p>
-              <a href="{{club.link}}">{{ club.link }}</a>
+              <a [routerLink]="['/club-details',club]">View Club Details Page</a>
             </p>
             <p>{{ club.phone }}</p>
             <p>

@@ -1,10 +1,10 @@
 <div class="card">
   <div class="card-content">
     <div class="content">
-      <p>Name: {{clubFromClubDetails.name}}</p>
-      <p>Email: {{clubFromClubDetails.email}}</p>
-      <p>Address: {{clubFromClubDetails.city}}, {{clubFromClubDetails.state}} {{clubFromClubDetails.zipcode}}</p>
-      <a routerLink="/club-details" [queryParams]="{club :  stringify()}" >Return to Club Details</a>
+      <p>Name: {{clubDetails.name}}</p>
+      <p>Email: {{clubDetails.email}}</p>
+      <p>Address: {{clubDetails.city}}, {{clubDetails.state}} {{clubDetails.zipcode}}</p>
+      <a [routerLink]="['/club-details', clubDetails]"  >Return to Club Details</a>
     </div>
   </div>
 </div>

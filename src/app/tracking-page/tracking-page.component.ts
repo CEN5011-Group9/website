@@ -55,13 +55,21 @@ export class TrackingPageComponent implements OnInit {
       console.log("The params is defined even when it is accessed from the homepage")
     }
 
-    if( this.$router.params ){
+    console.log("The user temp details breakdown is first name: " + this.userTempDetails.user.firstName 
+    + " ,last name: " + this.userTempDetails.user.lastName 
+    + " ,email: " + this.userTempDetails.user.email 
+    + " ,role: " + this.userTempDetails.user.role )
+
+    if( this.userTempDetails.user.role === 'Admin'  ){
+      console.log("The ngOnInit() in tracking-page.component.ts has reached the admin flow")
+      console.log("The router parameter in string format is "+ JSON.stringify(this.$router.params))
       this.$router.params.subscribe(
         params => {
             this.userDetails = params
         }
       )
     } else {
+      console.log("The ngOnInit() in tracking-page.component.ts has reached the user flow")
       direct = true
       this.userDetails = this.userTempDetails.user
     }

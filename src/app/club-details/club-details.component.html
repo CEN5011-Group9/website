@@ -3,14 +3,14 @@
     <div class="display-name">{{clubDetails.name}}</div>
     <div class="display-details">
       <p>{{clubDetails.type}}</p>
-      <p>{{clubDetails.addressline1}}</p>
-      <p>{{clubDetails.city}}</p>
+      <p>{{addressDetails.street}}</p>
+      <p>{{addressDetails.city}}</p>
     </div>
     <div class="display-buttons">
       <button id="joinbutton" class="button is-primary" (click)="join()">Join</button>
       <button class="button is-danger" id="leavebutton" (click)="leave()">Leave</button>
       <br />
-      <a routerLink="/club-contacts" [queryParams]="{club :  stringify()}">View Club Contacts Page</a>
-    </div>
+      <a [routerLink]="['/club-contacts', mergedClubAndAddr ]" >View Club Contacts Page</a>
+    </div> 
   </div>
 </div>

@@ -10,7 +10,7 @@
     <tr *ngFor="let club of clubDetails">
       <td>{{club.name}}</td>
       <td>
-        <a routerLink="{{ club.link }}">View Club Details Page</a>
+        <a [routerLink]="['/club-details', club]">View Club Details Page</a>
       </td>
       <td>{{club.email}}</td>
     </tr>
