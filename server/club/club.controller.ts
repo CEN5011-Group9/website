@@ -8,7 +8,8 @@ import {
     Post,
     Body,
     Patch,
-    Delete
+    Delete,
+    Put
   } from '@nestjs/common';
   import { Club, User, UserRole, Address } from '@prisma/client';
   
@@ -202,6 +203,145 @@ import { AddressService } from 'server/address/address.service';
         const records = await this.$database.club.delete({
         where : { email : email }
         })
+    }
+
+    @Put('/join/:username/:clubname')
+    public async join(
+        @Param('username') username : string,
+        @Param('clubname') clubname : string
+    ){
+        console.log("The join() is called in club.controller.ts class for the user " 
+        + username + " and the club " + clubname)
+
+        const user = await this.$database.user.findUnique({
+            where : {
+                email : username
+            },
+            include : {
+                clubs : true 
+            }
+        })
+
+        console.log("The current list of clubs for the users are")
+
+        user?.clubs.forEach( (c) => {
+            console.log(c.name +"->" + c.email)
+        })
+
+        const updatedUser = await this.$database.user.update({
+            where: { email: username},
+            data: { clubs : { connect: { email: clubname}}},
+            include: { clubs: true}
+        })
+
+        console.log("The list of clubs after the update are")
+
+        updatedUser?.clubs.forEach( (c) => {
+            console.log(c.name +"->" + c.email)
+        })
+
+        return updatedUser
+
+    }
+
+    @Put('/remove/:username/:clubname')
+    public async remove(
+        @Param('username') username : string,
+        @Param('clubname') clubname : string
+    ){
+        console.log("The remove() is called in club.controller.ts class for the user " 
+        + username + " and the club " + clubname)
+
+        const user = await this.$database.user.findUnique({
+            where : {
+                email : username
+            },
+            include : {
+                clubs : true 
+            }
+        })
+
+        console.log("The current list of clubs for the users are")
+
+        user?.clubs.forEach( (c) => {
+            console.log(c.name +"->" + c.email)
+        })
+
+        let updatedUser = await this.$database.user.update({
+                where: { email: username},
+                data: { clubs : { disconnect: { email: clubname}}},
+                include: { clubs: true}
+        })
+
+        console.log("The list of clubs after the deleting the club are")
+
+        updatedUser?.clubs.forEach( (c) => {
+            console.log(c.name +"->" + c.email)
+        })
+
+        return updatedUser
+
+    }
+
+    @Put('/remove/:username')
+    public async removeUserByClubRep(
+        @Param('username') username : string,
+        @Body('clubnames') clubnamesParam : string[]
+    ){
+        console.log("The remove() by the club rep to remvove an user from all his clubs" 
+        + "The service is called in club.controller.ts class for the user " 
+        + username )
+
+        const user = await this.$database.user.findUnique({
+            where : {
+                email : username
+            },
+            include : {
+                clubs : true 
+            }
+        })
+
+        console.log("The current list of clubs for the users are")
+
+        let clubNames : string[] = []
+
+        user?.clubs.forEach( (c) => {
+            console.log("Club found in the user object is " + c.name +"->" + c.email)
+            clubnamesParam.forEach( (cp) => {
+                if( c.email === cp ){
+                    console.log("The club is also found in the request."
+                    + "The user's association for this club will be attempted to be removed")
+                    clubNames.push(cp)
+                }
+            })
+        })
+
+        let updatedUser : any
+
+        try {
+            for( let clubname of clubNames ){
+                updatedUser = await this.$database.user.update({
+                    where: { email: username},
+                    data: { clubs : { disconnect: { email: clubname}}},
+                    include: { clubs: true}
+                })
+            }
+        } catch( err : any ){
+            console.log("Faced an error when disconnecting the club:" + err)
+        }
+        
+
+        console.log("The list of clubs after the deleting the club are")
+
+        if( updatedUser !== null && updatedUser !== undefined){
+            updatedUser?.clubs.forEach( (c : Club) => {
+                console.log(c.name +"->" + c.email)
+            })
+        }
+        
+
+        return updatedUser
+
     }
 
   }
