@@ -1,0 +1,86 @@
+<form class="tracking-page-form" [formGroup]="createClubForm" (submit)="create()" >
+    <div>
+      <label for="name">Name: </label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        formControlName="name"
+      />
+    </div>
+    <div>
+      <label for="type">Type: </label>
+      <input
+        type="text"
+        name="type"
+        id="type"
+        formControlName="type"
+      />
+    </div>
+    <div>
+      <label for="description">Description: </label>
+      <input
+        type="text"
+        name="description"
+        id="description"
+        formControlName="description"
+      />
+    </div>
+    <div>
+      <label for="phone">Phone: </label>
+      <input
+        type="text"
+        name="phone"
+        id="phone"
+        formControlName="phone"
+      />
+    </div>
+    <div>
+      <label for="email">Email: </label>
+      <input
+        type="text"
+        name="email"
+        id="email"
+        formControlName="email"
+      />
+    </div>
+    <div>
+      <label for="street">Address Line 1: </label>
+      <input
+        type="text"
+        name="street"
+        id="street"
+        formControlName="street"
+      />
+    </div>
+    <div>
+      <label for="city">City: </label>
+      <input
+        type="text"
+        name="city"
+        id="city"
+        formControlName="city"
+      />
+    </div>
+    <div>
+      <label for="state">State: </label>
+      <input
+        type="text"
+        name="state"
+        id="state"
+        formControlName="state"
+      />
+    </div>
+    <div>
+      <label for="zipcode">Zipcode: </label>
+      <input
+        type="text"
+        name="zipcode"
+        id="zipcode"
+        formControlName="zipcode"
+      />
+    </div>
+    <button class="updateButton">Create</button>
+    <div class="error"></div>
+  </form>
+  

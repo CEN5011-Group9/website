@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { Club } from "@prisma/client";
+import { Address, Club } from "@prisma/client";
 import { DatabaseService } from "server/database/database.service";
 import { ClubDetailDTO } from "server/models/ClubDetailDTO";
 import { UserService } from "server/user/user.service";
@@ -24,8 +24,19 @@ export class ClubService{
         newClub.type = newClubDetailDTO.type
         newClub.addressId = newClubDetailDTO.addressId
         const uuId = this.generateUUID()
-        console.log(uuId);
+        console.log(" The club created has the UUID "+uuId);
         newClub.id = uuId
+    }
+
+    mapAddressData( newAddress : Address, newClubDetailDTO : ClubDetailDTO ){
+        console.log("The Address object is created from newClubDetailDTO")
+        newAddress.city = newClubDetailDTO.city
+        newAddress.state = newClubDetailDTO.state as string
+        newAddress.street = newClubDetailDTO.street as string
+        newAddress.zipcode = newClubDetailDTO.zipcode as string
+        const uuId = this.generateUUID()
+        console.log(" The address created has the UUID " + uuId )
+        newAddress.id = uuId
     }
 
     public generateUUID()  {

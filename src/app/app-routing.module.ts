@@ -11,6 +11,7 @@ import { UsersComponent } from './users/users.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { ViewClubsComponent } from './view-clubs/view-clubs.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
+import { CreateClubComponent } from './create-club/create-club.component';
 
 const routes: Routes = [
   {
@@ -60,6 +61,10 @@ const routes: Routes = [
   {
     path: 'update-user',
     component: UpdateUserComponent
+  },
+  {
+    path: 'create-club',
+    component: CreateClubComponent
   },
   {
     path: '',

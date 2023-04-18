@@ -81,6 +81,18 @@ import { AddressService } from 'server/address/address.service';
         //Generate a uuid for club and that is the id for it throughout
         // Send the id for club and create a new address with this id as the link
         //
+        let newAddress : Address = {
+            id : "",
+            street : "",
+            city : "",
+            state : "",
+            zipcode : ""
+        }
+
+        this.clubservice.mapAddressData(newAddress, newClubDTO)
+
+        let createdAddress = await this.$database.address.create({data: newAddress})
+
         let newClub : Club = {
             id : "",
             email : "",
@@ -93,6 +105,8 @@ import { AddressService } from 'server/address/address.service';
         }
 
         this.clubservice.mapClubData(newClub, newClubDTO)
+
+        newClub.addressId = createdAddress.id
 
         console.log("The createClub() is going to be created with the object"+ JSON.stringify(newClub) )
 
@@ -195,7 +209,7 @@ import { AddressService } from 'server/address/address.service';
     }
 
     @Delete('/delete/:clubmailid')
-    public async deleteUser(
+    public async deleteClub(
         @Param('clubmailid') email : string
     ) {
         console.log("The delete call is initiated with the mail id " + email)
@@ -343,5 +357,6 @@ import { AddressService } from 'server/address/address.service';
         return updatedUser
 
     }
+
 
   }

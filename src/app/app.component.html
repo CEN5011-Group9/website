@@ -10,7 +10,7 @@
 
   <div id="navbarMain" class="navbar-menu">
     <div class="navbar-start">
-      <ng-container *ngIf="($userService.user | async) != null">
+      <ng-container>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">Profile</a>
           <div class="navbar-dropdown">
@@ -19,13 +19,18 @@
           </div>
         </div>
       </ng-container>
-      <ng-container *ngIf="($userService.user | async) == null">
-        <div class="navbar-item">
-          <a routerLink="/login">Login</a>
-        </div>
-      </ng-container>
+      <!--
+        <ng-container *ngIf="($userService.user | async) == null">
+          <div class="navbar-item">
+            <a routerLink="/login">Login</a>
+          </div>
+        </ng-container>
+      -->
     </div>
     <div class="navbar-end">
+      <div class="navbar-item">
+        <a routerLink="/create-club">Create Club</a>
+      </div>
       <div class="navbar-item">
         <a routerLink="/view-clubs">View Clubs</a>
       </div>
