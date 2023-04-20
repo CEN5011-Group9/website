@@ -14,8 +14,12 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">Profile</a>
           <div class="navbar-dropdown">
-            <a>Profile</a>
-            <a>Logout</a>
+            <div>
+              <a router-link="/user-profile" (click)="navigateToUserProfile()" >Profile</a>
+            </div>
+            <div>
+              <a router-link="/login" (click)="logoutAndNavigateToLoginScreen()" >Logout</a>
+            </div>
           </div>
         </div>
       </ng-container>

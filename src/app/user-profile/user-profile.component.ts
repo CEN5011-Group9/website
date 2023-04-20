@@ -10,11 +10,38 @@ import { Router } from '@angular/router';
 })
 export class UserProfileComponent {
 
+  updateUserApiPath : any
+  userDetails : any
+
+  findUpdateUserApiPath( email : string ){
+    return "http://localhost:4200/api/user/update/" + email
+  }
+
+  ngOnInit(){
+    console.log("The code flow has entered ngOnInit() in user-profile.component.ts")
+
+    let userTempDetails = JSON.parse(localStorage.getItem("userDetails") as string)
+
+    let getUserApiPath = "http://localhost:4200/api/user/"+ userTempDetails.user.email
+
+    this.$http.get( getUserApiPath )
+                          .subscribe({
+                            next : (data:any) => {
+                              console.log("The data that we received from the database in user-profile.component.ts is " + data )
+                              this.userDetails = data
+                            },
+                            error : (err:any) => {
+                              console.log("The data that we received from the database in user-profile.component.ts is " + err)
+                            }
+                          })
+  }
+
   public userProfileForm = this.$fb.group({
-    name: ['', Validators.required],
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required],
     email: ['', Validators.required],
-    phone: ['', Validators.required],
-    newpassword: ['', Validators.required],
+    phoneNumber: ['', Validators.required],
+    passwordHash: ['', Validators.required],
     confirmpassword: ['', Validators.required]
   });
 
@@ -25,11 +52,30 @@ export class UserProfileComponent {
   ) {}
 
   onSubmit() {
+    let user = this.userDetails
+    console.log("The code flow has entered onSubmit() in user-profile.component.ts file ")
+    console.log("The mail id of the user is "+ user.email)
 
+    let updateApiPath = this.findUpdateUserApiPath(user.email)
+    console.log("The update api path is " + updateApiPath)
+
+    this.$http.patch(
+      updateApiPath,
+      this.userProfileForm.value
+      )
+      .subscribe({
+        next: (data:any) => {
+          console.log("The data updated in onSubmit() or the response received after update call in users.component.ts file is " + data)
+          this.userDetails = data
+        },
+        error: (err:any) => {
+          console.log("The error that we have received in onSubmit() in users.component.ts is " + err)
+        }
+      })
   }
 
   checkPasswordMatch( event: KeyboardEvent){
-    const newPassword = this.userProfileForm.get("newpassword")?.value
+    const newPassword = this.userProfileForm.get("passwordHash")?.value
     const confirmPassword = this.userProfileForm.get("confirmpassword")?.value
 
     if( newPassword == confirmPassword ){

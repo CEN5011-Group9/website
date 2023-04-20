@@ -25,6 +25,7 @@ export class ViewClubsComponent {
 
   findClubApiPath( user : User ) : string {
     console.log("The flow entered findClubApiPath() in view-clubs.component.ts ")
+    console.log("The user role is " + user.role)
     if( user.role == 'Admin' ){
       return 'http://localhost:4200/api/user/allClubs/' + user.email
     } else if( user.role == 'ClubOwner' ){
@@ -35,8 +36,10 @@ export class ViewClubsComponent {
   }
 
   ngOnInit(){
+    console.log("The flow entered the ngOnInit() in view-clubs.component.ts ")
     this.clubApiPath = this.findClubApiPath(this.currentUserDetails.user)
 
+    console.log("The path is" + this.clubApiPath)
     this.$http.get(this.clubApiPath)
         .subscribe({
           next : ( clubData : any ) =>{

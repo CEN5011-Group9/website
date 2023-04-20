@@ -1,40 +1,53 @@
 <section class="section">
   <div class="content">
     <h2>User Profile</h2>
-    <form class="form" [formGroup]="userProfileForm">
+    <form class="form" [formGroup]="userProfileForm" (submit)="onSubmit()">
         <div>
-        <label for="name">Name:</label>
-        <input type="text"
-            id = "name"
-            name = "name"
-            formControlName = "name"
-            required
-        />
+            <label for="firstName">First Name:</label>
+            <input
+                type="text"
+                id="firstName"
+                name="firstName"
+                formControlName="firstName"
+                placeholder="{{userDetails.firstName}}"
+            />
         </div>
         <div>
-        <label for="email">Email:</label>
-        <input type="text"
-            id = "email"
-            name = "email"
-            formControlName = "email"
-            required
-        />
+            <label for="lastName">Last Name:</label>
+            <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                formControlName="lastName"
+                placeholder="{{userDetails.lastName}}"
+            />
         </div>
         <div>
-        <label for="phone">Phone Number:</label>
-        <input type="text"
-            id = "phone"
-            name = "phone"
-            formControlName = "phone"
-            required
-        />
+            <label for="email">Email:</label>
+            <input type="text"
+                id = "email"
+                name = "email"
+                formControlName = "email"
+                placeholder = "{{userDetails.email}}"
+                required
+            />
+            </div>
+        <div>
+            <label for="phoneNumber" >Phone Number:</label>
+            <input
+                type="text"
+                id="phoneNumber"
+                name="phoneNumber"
+                formControlName="phoneNumber"
+                placeholder="{{userDetails.phoneNumber}}"
+            />
         </div>
         <div>
-        <label for="newpassword">New Password:</label>
+        <label for="passwordHash">New Password:</label>
         <input type="password"
-            id = "newpassword"
-            name = "newpassword"
-            formControlName = "newpassword"
+            id = "passwordHash"
+            name = "passwordHash"
+            formControlName = "passwordHash"
             (keyup) = "checkPasswordMatch($event)"
             required
         />
@@ -49,7 +62,7 @@
             required
         />
         </div>
-        <button class="button" type="submit" [disabled]="userProfileForm.invalid">
+        <button class="button" type="submit">
         Update
         </button>
         <div class="error"></div>

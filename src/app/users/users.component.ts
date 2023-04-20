@@ -5,6 +5,7 @@ import { User } from '../models/user';
 import { style } from '@angular/animations';
 import { throwError } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { Club } from '../models/club'
 
 @Component({
   selector: 'app-view-users-page',
@@ -18,6 +19,8 @@ export class UsersComponent {
   userTempDetails = JSON.parse(this.userDetailsString)
 
   public userDetails : any
+
+  public allClubs : any
 
   apiPath = this.findPath(this.userTempDetails.user, this.userDetailsString)
 
@@ -44,6 +47,17 @@ export class UsersComponent {
         console.log("The following error has occurred "+err);
       }
     })
+
+    if( this.userTempDetails.user.role == 'Admin' ){
+      let getAllClubsApiPath = "http://localhost:4200/api/user/allClubs/" + this.userTempDetails.user.email
+      let data : any
+      try {
+        data = this.$http.get(getAllClubsApiPath).toPromise()
+        this.allClubs = data
+      } catch( exception : any ){
+        console.log("The following exception occurred" + exception )
+      }
+    }
   }
 
   storeUserDetails( userData : any ){
@@ -86,11 +100,28 @@ export class UsersComponent {
     let removeApiPath = "http://localhost:4200/api/club/remove/" + user.email
 
     let clubNames : string[] = []
-    this.userTempDetails.user.clubs.forEach( (club:any) => {
-      clubNames.push(club.email)
-    })
+
+    let currentUser = this.userTempDetails.user
+
+    if( currentUser.role === 'ClubOwner' ){
+      this.userTempDetails.user.clubs.forEach( (club:any) => {
+        clubNames.push(club.email)
+      })
+    } else if( currentUser.role === 'Admin' ){
+      
+      console.log("The control reached after the all clubs point")
+      console.log("The all clubs are " + JSON.stringify(this.allClubs) )
+
+      this.allClubs.__zone_symbol__value.forEach( (club:any) => {
+        console.log("The club is " + club.name + " and email id is " + club.email)
+        clubNames.push(club.email)
+      })
+    }
+    
 
     let clubNamesRequest = { "clubnames" : clubNames }
+
+    console.log("The clubNames that will removed from an user is "+ clubNames)
 
     this.$http.put(
       removeApiPath,
@@ -106,4 +137,18 @@ export class UsersComponent {
     
 
   }
+
+  /*
+  public async getAllClubs() : Promise<Club[]>{
+    let getAllClubsApiPath = "http://localhost:4200/api/user/allClubs/" + this.userTempDetails.user.email
+    let data : any
+    try {
+      data = await this.$http.get(getAllClubsApiPath).toPromise()
+    } catch( exception : any ){
+      console.log("The following exception occurred" + exception )
+    }
+
+    return data
+  }
+  */
 }
