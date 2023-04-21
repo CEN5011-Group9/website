@@ -1,4 +1,4 @@
-<form class="tracking-page-form" [formGroup]="manageClubForm" (submit)="updateCall()" >
+<form class="form" [formGroup]="manageClubForm" (submit)="updateCall()" >
   <div>
     <label for="name">Name: </label>
     <input
@@ -89,6 +89,6 @@
       placeholder="{{addressDetails.zipcode}}"
     />
   </div>
-  <button class="updateButton">Update</button>
+  <button class="updateButton button is-primary">Update</button>
   <div class="error"></div>
 </form>

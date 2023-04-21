@@ -32,6 +32,8 @@ export class ClubDetailsComponent {
 
   userTempDetails : any = JSON.parse(this.userTempDetailsString)
 
+  isUserJoined : any
+
   ngOnInit(){
     console.log("The code flow is entering ngOnInit() in club-details.component.ts "+ this.router.queryParams)
     //if( this.router.queryParams !== undefined )  //Doubt #1 - How to handle this
@@ -59,6 +61,23 @@ export class ClubDetailsComponent {
       }
     });
 
+    console.log("The list of clubs for the current user is" + JSON.stringify(this.userTempDetails.user.clubs) )
+
+    const clubs : Club[] = this.userTempDetails.user.clubs
+    
+    this.isUserJoined = false
+     
+    for( let club of clubs ){
+      console.log("The name of the clubs in user object is " + club.email 
+      + " and the current club is " + this.clubDetails.email 
+      + " and are they same " + (club.email === this.clubDetails.email) )
+      if( club.email === this.clubDetails.email ){
+        this.isUserJoined = true
+      }
+    }
+
+    console.log("Is the user already a member of the club" + this.isUserJoined)
+
     setTimeout( () => {
       this.processingClubAndAddress()
     } , 30000);
@@ -74,12 +93,37 @@ export class ClubDetailsComponent {
   }
 
   public join(){
-    // let leaveElement = document != null ? document.getElementById("leavebutton") != null ? document.getElementById("leavebutton") : null : null;
-    // let joinElement = document != null ? document.getElementById("joinbutton") != null ? document.getElementById("joinbutton") : null : null;
-    // if( leaveElement !== null )
-    //   leaveElement.style.display = "block";
-    // if( joinElement !== null )
-    //   joinElement.style.display = "none";
+    /*
+      let leaveElement = document != null ? document.getElementById("leavebutton") != null ? document.getElementById("leavebutton") : null : null;
+      let joinElement = document != null ? document.getElementById("joinbutton") != null ? document.getElementById("joinbutton") : null : null;
+      if( leaveElement !== null )
+        leaveElement.style.display = "block";
+      if( joinElement !== null )
+        joinElement.style.display = "none";
+    */
+    this.isUserJoined = true
+
+    /*
+    let club : any
+
+     this.$http.get("http://localhost:4200/api/club/email" + this.clubDetails.email)
+                    .subscribe({
+                      next : (data:any) => {
+                        club = data
+                      }, error : (err:any) => {
+                        console.log("The error is" +)
+                      }
+                    })
+
+    console.log("The club details you joined is" + club)
+
+    this.userTempDetails.user.clubs.push(JSON.stringify(club.source))
+
+    let userDetailsString = JSON.stringify(this.userTempDetails)
+
+    localStorage.setItem("userDetails", userDetailsString)
+    */
+    
     let joinClubApiPath = this.findJoinClubApiPath(this.userTempDetails.user.email, this.clubDetails.email)
 
     this.$http.put(
@@ -88,6 +132,7 @@ export class ClubDetailsComponent {
     ).subscribe({
       next : (data:any) =>{
         console.log("The join() method in club-details.component.ts class is completed - the updated user details are" + JSON.stringify(data))
+        
       },
       error : (err:any) =>{
         console.log("The error method in club-details.component.ts class is completed" + err)
@@ -97,12 +142,15 @@ export class ClubDetailsComponent {
   }
 
   public leave(){
-    // let leaveElement = document != null ? document.getElementById("leavebutton") != null ? document.getElementById("leavebutton") : null : null;
-    // let joinElement = document != null ? document.getElementById("joinbutton") != null ? document.getElementById("joinbutton") : null : null;
-    // if( leaveElement !== null )
-    //   leaveElement.style.display = "none";
-    // if( joinElement !== null )
-    //   joinElement.style.display = "block";
+    /*
+      let leaveElement = document != null ? document.getElementById("leavebutton") != null ? document.getElementById("leavebutton") : null : null;
+      let joinElement = document != null ? document.getElementById("joinbutton") != null ? document.getElementById("joinbutton") : null : null;
+      if( leaveElement !== null )
+        leaveElement.style.display = "none";
+      if( joinElement !== null )
+        joinElement.style.display = "block";
+    */
+    this.isUserJoined = false
 
     let removeClubApiPath = this.findRemoveClubApiPath(this.userTempDetails.user.email, this.clubDetails.email)
 
@@ -133,6 +181,10 @@ export class ClubDetailsComponent {
     console.log("The merged club and address details object is " + this.mergedClubAndAddr )
     console.log("The merged club and address details string is " + JSON.stringify(this.mergedClubAndAddr) )
 
+  }
+
+  public isStudent(){
+    return this.userTempDetails.user.role === "User"
   }
 
 }

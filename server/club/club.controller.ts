@@ -34,10 +34,22 @@ import { AddressService } from 'server/address/address.service';
     @Get('/:clubname')
     async getClub(
         @Param('clubname') clubname: string
+    ) : Promise<Club[] | null> {
+        return await this.$database.club.findMany({
+            where: {
+                name: clubname
+            }
+        });
+    }
+
+    @Public()
+    @Get('/email/:email')
+    async getClubByEmail(
+        @Param('email') email: string
     ) : Promise<Club | null> {
         return await this.$database.club.findUnique({
             where: {
-                name: clubname
+                email: email
             }
         });
     }

@@ -6,11 +6,18 @@
       <p>{{addressDetails.street}}</p>
       <p>{{addressDetails.city}}</p>
     </div>
-    <div class="display-buttons">
-      <button id="joinbutton" class="button is-primary" (click)="join()">Join</button>
-      <button class="button is-danger" id="leavebutton" (click)="leave()">Leave</button>
-      <br />
-      <a [routerLink]="['/club-contacts', mergedClubAndAddr ]" >View Club Contacts Page</a>
-    </div> 
+    <ng-container *ngIf="isStudent()">
+      <div class="display-buttons">
+        <ng-container *ngIf="!isUserJoined">
+          <button id="joinbutton" class="button is-primary" (click)="join()">Join</button>
+        </ng-container>
+        <ng-container *ngIf="isUserJoined">
+          <button class="button is-danger" id="leavebutton" (click)="leave()">Leave</button>
+        </ng-container>
+      </div> 
+  </ng-container>
+  <div>
+    <a [routerLink]="['/club-contacts', mergedClubAndAddr ]" >View Club Contacts Page</a>
+  </div>
   </div>
 </div>

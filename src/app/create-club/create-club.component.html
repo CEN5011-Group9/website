@@ -1,4 +1,4 @@
-<form class="tracking-page-form" [formGroup]="createClubForm" (submit)="create()" >
+<form class="form" [formGroup]="createClubForm" (submit)="create()" >
     <div>
       <label for="name">Name: </label>
       <input
@@ -80,7 +80,7 @@
         formControlName="zipcode"
       />
     </div>
-    <button class="updateButton">Create</button>
+    <button class="updateButton button is-primary">Create</button>
     <div class="error"></div>
   </form>
   

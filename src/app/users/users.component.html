@@ -6,9 +6,12 @@
       <td>Email</td>
       <td>User Type</td>
       <td>Phone Number</td>
-      <td>View Tracking</td>
-      <td>Update</td>
-      <td>Delete</td>
+      <ng-container *ngIf="isAdmin()">
+        <td>View Tracking</td>
+        <td>Update</td>
+        <td>Delete</td>
+      </ng-container>
+      <td>Remove User</td>
     </tr>
   </thead>
   <tbody >
@@ -18,14 +21,16 @@
       <td>{{user.email}}</td>
       <td>{{user.role}}</td>
       <td>{{user.phoneNumber}}</td>
-      <td>
-        <a class="button" [routerLink]="['/tracking-page', user]">View Tracking</a>
-      </td>
-      <td>
-        <a class="button" [routerLink]="['/update-user', user]">Update</a>
-      <td>
-        <button class="button is-danger" type="submit" (click)="delete(user)">Delete</button>
-      </td>
+      <ng-container *ngIf="isAdmin()">
+        <td>
+          <a class="button" [routerLink]="['/tracking-page', user]">View Tracking</a>
+        </td>
+        <td>
+          <a class="button" [routerLink]="['/update-user', user]">Update</a>
+        <td>
+          <button class="button is-danger" type="submit" (click)="delete(user)">Delete</button>
+        </td>
+      </ng-container>
       <td>
         <button class="button is-danger" type="submit" (click)="removeUser(user)">Remove User From Club</button>
       </td>

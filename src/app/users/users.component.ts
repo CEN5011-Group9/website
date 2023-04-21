@@ -138,6 +138,10 @@ export class UsersComponent {
 
   }
 
+  public isAdmin() : boolean {
+    return JSON.parse(localStorage.getItem("userDetails") as string).user.role == "Admin"
+  }
+
   /*
   public async getAllClubs() : Promise<Club[]>{
     let getAllClubsApiPath = "http://localhost:4200/api/user/allClubs/" + this.userTempDetails.user.email
