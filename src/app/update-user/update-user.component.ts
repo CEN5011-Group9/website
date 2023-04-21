@@ -31,7 +31,7 @@ export class UpdateUserComponent {
   })
 
   findUpdateUserApiPath( email : string ){
-    return "http://localhost:4200/api/user/update/" + email
+    return "/api/user/update/" + email
   }
 
   ngOnInit(){

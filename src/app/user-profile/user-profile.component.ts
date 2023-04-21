@@ -14,7 +14,7 @@ export class UserProfileComponent {
   userDetails : any
 
   findUpdateUserApiPath( email : string ){
-    return "http://localhost:4200/api/user/update/" + email
+    return "/api/user/update/" + email
   }
 
   ngOnInit(){
@@ -22,7 +22,7 @@ export class UserProfileComponent {
 
     let userTempDetails = JSON.parse(localStorage.getItem("userDetails") as string)
 
-    let getUserApiPath = "http://localhost:4200/api/user/"+ userTempDetails.user.email
+    let getUserApiPath = "/api/user/"+ userTempDetails.user.email
 
     this.$http.get( getUserApiPath )
                           .subscribe({

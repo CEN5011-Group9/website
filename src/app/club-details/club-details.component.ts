@@ -26,7 +26,7 @@ export class ClubDetailsComponent {
   mergedClubAndAddr : any
 
   findAddressApiPath( addressId : string ){
-    return "http://localhost:4200/api/address/" + addressId
+    return "/api/address/" + addressId
   }
 
   userTempDetailsString = localStorage.getItem('userDetails') as string
@@ -86,11 +86,11 @@ export class ClubDetailsComponent {
   }
 
   findJoinClubApiPath( userName : string, clubName : string ) : string {
-    return "http://localhost:4200/api/club/join/" + userName + "/" + clubName
+    return "/api/club/join/" + userName + "/" + clubName
   }
 
   findRemoveClubApiPath( userName : string, clubName : string ) : string {
-    return "http://localhost:4200/api/club/remove/" + userName + "/" + clubName
+    return "/api/club/remove/" + userName + "/" + clubName
   }
 
   public join(){
@@ -107,7 +107,7 @@ export class ClubDetailsComponent {
     /*
     let club : any
 
-     this.$http.get("http://localhost:4200/api/club/email" + this.clubDetails.email)
+     this.$http.get("/api/club/email" + this.clubDetails.email)
                     .subscribe({
                       next : (data:any) => {
                         club = data

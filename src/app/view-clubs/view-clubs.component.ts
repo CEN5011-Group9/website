@@ -27,9 +27,9 @@ export class ViewClubsComponent {
     console.log("The flow entered findClubApiPath() in view-clubs.component.ts ")
     console.log("The user role is " + user.role)
     if( user.role == 'Admin' ){
-      return 'http://localhost:4200/api/user/allClubs/' + user.email
+      return '/api/user/allClubs/' + user.email
     } else if( user.role == 'ClubOwner' ){
-      return 'http://localhost:4200/api/user/clubs/' + user.email 
+      return '/api/user/clubs/' + user.email 
     }
 
     return ""
@@ -54,7 +54,7 @@ export class ViewClubsComponent {
   delete( club : any ){
     console.log("The flow entered deleted() in view-clubs.component.ts ")
     console.log("The club mail id is " + club.email)
-    let deleteApiPath = 'http://localhost:4200/api/club/delete/' + club.email
+    let deleteApiPath = '/api/club/delete/' + club.email
 
     this.$http.delete(deleteApiPath)
       .subscribe({

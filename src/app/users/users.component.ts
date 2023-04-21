@@ -28,9 +28,9 @@ export class UsersComponent {
     console.log(" The user details string is " + userString)
     console.log("The user details are " + user + " and the details are " + user.firstName +" and the last name is " + user.lastName + " ,the type is " + user.role )
     if( user.role === 'Admin' ){
-      return 'http://localhost:4200/api/user/getAllUsers/' + user.email
+      return '/api/user/getAllUsers/' + user.email
     } else if( user.role === 'ClubOwner' ){
-      const path = 'http://localhost:4200/api/club/allUsers/' + 'Math%20Club'
+      const path = '/api/club/allUsers/' + 'Math%20Club'
       return path
     }
 
@@ -49,7 +49,7 @@ export class UsersComponent {
     })
 
     if( this.userTempDetails.user.role == 'Admin' ){
-      let getAllClubsApiPath = "http://localhost:4200/api/user/allClubs/" + this.userTempDetails.user.email
+      let getAllClubsApiPath = "/api/user/allClubs/" + this.userTempDetails.user.email
       let data : any
       try {
         data = this.$http.get(getAllClubsApiPath).toPromise()
@@ -78,7 +78,7 @@ export class UsersComponent {
   public delete( user : any ){
     console.log("The code flow has entered delete() in users.component.ts file ")
     console.log("The mail id of the user is "+ user.email)
-    let deleteApiPath = "http://localhost:4200/api/user/delete/" + user.email
+    let deleteApiPath = "/api/user/delete/" + user.email
     console.log("The delete path is " + deleteApiPath)
     this.$http.delete(deleteApiPath)
       .subscribe({
@@ -97,7 +97,7 @@ export class UsersComponent {
     console.log("The code flow has entered removeUser() in users.component.ts file ")
     console.log("The mail id of the user is "+ user.email)
 
-    let removeApiPath = "http://localhost:4200/api/club/remove/" + user.email
+    let removeApiPath = "/api/club/remove/" + user.email
 
     let clubNames : string[] = []
 
@@ -171,7 +171,7 @@ export class UsersComponent {
 
   /*
   public async getAllClubs() : Promise<Club[]>{
-    let getAllClubsApiPath = "http://localhost:4200/api/user/allClubs/" + this.userTempDetails.user.email
+    let getAllClubsApiPath = "/api/user/allClubs/" + this.userTempDetails.user.email
     let data : any
     try {
       data = await this.$http.get(getAllClubsApiPath).toPromise()

@@ -31,9 +31,9 @@ export class ManageClubComponent {
     console.log(" The user details string is " + userString)
     console.log("The user details are " + user + " and the details are " + user.firstName +" and the last name is " + user.lastName + " ,the type is " + user.role )
     if( user.role === 'Admin' ){
-      return 'http://localhost:4200/api/user/allClubs/'
+      return '/api/user/allClubs/'
     } else if( user.role === 'ClubOwner' ){
-      const path = 'http://localhost:4200/api/user/clubs/' + user.email
+      const path = '/api/user/clubs/' + user.email
       return path
     }
 
@@ -42,7 +42,7 @@ export class ManageClubComponent {
 
   public findAddressPath( addressId : string ){
     console.log("The addressid is " + addressId)
-    return 'http://localhost:4200/api/address/' + addressId
+    return '/api/address/' + addressId
   }
 
   ngOnInit(){
@@ -154,7 +154,7 @@ export class ManageClubComponent {
 
     console.log("The updateCall() in manage-club.component.ts file is going to be attempted")
 
-    this.updateClubPath = "http://localhost:4200/api/club/update/" + this.clubDetails.email
+    this.updateClubPath = "/api/club/update/" + this.clubDetails.email
 
     console.log("The path is " + this.updateClubPath)
 

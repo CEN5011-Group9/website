@@ -39,7 +39,7 @@ export class CreateClubComponent {
   create(){
     console.log("The create() is called from the create-club.component.ts")
 
-    let createClubApiPath = "http://localhost:4200/api/club/create"
+    let createClubApiPath = "/api/club/create"
 
     console.log("The createClubForm value is " + JSON.stringify(this.createClubForm.value))
 

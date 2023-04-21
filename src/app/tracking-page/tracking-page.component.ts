@@ -31,10 +31,10 @@ export class TrackingPageComponent implements OnInit {
 
     if( user.role == 'Admin' && direct ){
       console.log("The user role has entered the admin flow")
-      return 'http://localhost:4200/api/user/allClubs/' + user.email
+      return '/api/user/allClubs/' + user.email
     } else if( user.role == 'User' ){
       console.log("The user role has entered the User flow")
-      const path = 'http://localhost:4200/api/user/clubs/' + user.email
+      const path = '/api/user/clubs/' + user.email
       return path
     }
 
