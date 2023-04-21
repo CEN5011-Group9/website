@@ -1,3 +1,61 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" routeLink="/">Website</a>
+    </div>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <!-- <span aria-hidden="true">{{$userService.user}}</span> -->
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  
+    <div id="navbarMain" class="navbar-menu">
+      <div class="navbar-start">
+        <ng-container>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">Profile</a>
+            <div class="navbar-dropdown">
+              <div>
+                <a router-link="/user-profile" (click)="navigateToUserProfile()" >Profile</a>
+              </div>
+              <div>
+                <a router-link="/login" (click)="logoutAndNavigateToLoginScreen()" >Logout</a>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <!--
+          <ng-container *ngIf="($userService.user | async) == null">
+            <div class="navbar-item">
+              <a routerLink="/login">Login</a>
+            </div>
+          </ng-container>
+        -->
+      </div>
+      <div class="navbar-end">
+        <ng-container *ngIf="isAdminOrClubRep()">
+          <div class="navbar-item">
+            <a routerLink="/create-club">Create Club</a>
+          </div>
+          <div class="navbar-item">
+            <a routerLink="/view-clubs">View Clubs</a>
+          </div>
+          <div class="navbar-item">
+            <a routerLink="/users">View Users</a>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="isStudent()">
+          <div class="navbar-item">
+            <a routerLink="/tracking-page">Tracking</a>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="isAdminOrStudent()">
+          <div class="navbar-item">
+            <a routerLink="/search">Search Page</a>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </nav>
 <form class="form" [formGroup]="updateClubApiForm" (submit)="updateUser()">
     <div>
         <label for="email" >Email:</label>

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +14,8 @@ export class CreateClubComponent {
   constructor(
     private readonly $http : HttpClient,
     private readonly $router : ActivatedRoute,
-    private readonly $fb : FormBuilder
+    private readonly $fb : FormBuilder,
+    private readonly $route : Router
   ) { }
 
   createClubForm = this.$fb.group({
@@ -54,6 +55,33 @@ export class CreateClubComponent {
         console.log( "The error received in create() create-club.component.ts " + err )
       }
     })    
+  }
+
+  navigateToUserProfile(){
+    console.log("The code flow enters navigateToUserProfile() method in app.component.ts ")
+    this.$route.navigate(['/user-profile'])
+  }
+
+  logoutAndNavigateToLoginScreen(){
+    console.log("The code flow enters logoutAndNavigateToLoginScreen() method in app.component.ts ")
+    localStorage.removeItem('userDetails')
+    localStorage.removeItem('loginCredentials')
+    this.$route.navigate(['/login'])
+  }
+
+  isAdminOrClubRep() : boolean {
+    let user = JSON.parse(localStorage.getItem("userDetails") as string).user
+    return user.role === "Admin" || user.role === "ClubOwner"
+  }
+
+  isAdminOrStudent() : boolean {
+    let user = JSON.parse(localStorage.getItem("userDetails") as string).user
+    return user.role === "Admin" || user.role === "User"
+  }
+
+  isStudent() : boolean {
+    let user = JSON.parse(localStorage.getItem("userDetails") as string).user
+    return user.role === "User"
   }
 
 

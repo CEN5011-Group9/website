@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '@prisma/client';
 
 
@@ -18,7 +18,8 @@ export class UpdateUserComponent {
   constructor(
     private readonly $http : HttpClient,
     private readonly $fb : FormBuilder,
-    private readonly $router : ActivatedRoute
+    private readonly $router : ActivatedRoute,
+    private readonly $route : Router
   ){}
 
   public updateClubApiForm = this.$fb.group({
@@ -73,5 +74,32 @@ export class UpdateUserComponent {
         }
       })
     
+  }
+
+  navigateToUserProfile(){
+    console.log("The code flow enters navigateToUserProfile() method in app.component.ts ")
+    this.$route.navigate(['/user-profile'])
+  }
+
+  logoutAndNavigateToLoginScreen(){
+    console.log("The code flow enters logoutAndNavigateToLoginScreen() method in app.component.ts ")
+    localStorage.removeItem('userDetails')
+    localStorage.removeItem('loginCredentials')
+    this.$route.navigate(['/login'])
+  }
+
+  isAdminOrClubRep() : boolean {
+    let user = JSON.parse(localStorage.getItem("userDetails") as string).user
+    return user.role === "Admin" || user.role === "ClubOwner"
+  }
+
+  isAdminOrStudent() : boolean {
+    let user = JSON.parse(localStorage.getItem("userDetails") as string).user
+    return user.role === "Admin" || user.role === "User"
+  }
+
+  isStudent() : boolean {
+    let user = JSON.parse(localStorage.getItem("userDetails") as string).user
+    return user.role === "User"
   }
 }

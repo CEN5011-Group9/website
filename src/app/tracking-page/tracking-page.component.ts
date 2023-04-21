@@ -103,8 +103,36 @@ export class TrackingPageComponent implements OnInit {
   constructor(
     private readonly $fb : FormBuilder,
     private readonly $http : HttpClient,
-    private readonly $router : ActivatedRoute
+    private readonly $router : ActivatedRoute,
+    private readonly $route : Router
     ) {}
+
+    navigateToUserProfile(){
+      console.log("The code flow enters navigateToUserProfile() method in app.component.ts ")
+      this.$route.navigate(['/user-profile'])
+    }
+  
+    logoutAndNavigateToLoginScreen(){
+      console.log("The code flow enters logoutAndNavigateToLoginScreen() method in app.component.ts ")
+      localStorage.removeItem('userDetails')
+      localStorage.removeItem('loginCredentials')
+      this.$route.navigate(['/login'])
+    }
+  
+    isAdminOrClubRep() : boolean {
+      let user = JSON.parse(localStorage.getItem("userDetails") as string).user
+      return user.role === "Admin" || user.role === "ClubOwner"
+    }
+  
+    isAdminOrStudent() : boolean {
+      let user = JSON.parse(localStorage.getItem("userDetails") as string).user
+      return user.role === "Admin" || user.role === "User"
+    }
+  
+    isStudent() : boolean {
+      let user = JSON.parse(localStorage.getItem("userDetails") as string).user
+      return user.role === "User"
+    }
 
 
   

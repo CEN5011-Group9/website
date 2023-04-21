@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Club } from '../models/club';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-club-contacts',
@@ -13,7 +13,8 @@ export class ClubContactsComponent {
 
   addressDetails : any
 
-  constructor( private router : ActivatedRoute ){ }
+  constructor( private router : ActivatedRoute,
+    private route : Router ){ }
 
   ngOnInit(){
     this.router.params.subscribe( params=> {
@@ -26,6 +27,33 @@ export class ClubContactsComponent {
       this.addressDetails = JSON.parse(params['addressDetails'])
       */
     })
+  }
+
+  navigateToUserProfile(){
+    console.log("The code flow enters navigateToUserProfile() method in app.component.ts ")
+    this.route.navigate(['/user-profile'])
+  }
+
+  logoutAndNavigateToLoginScreen(){
+    console.log("The code flow enters logoutAndNavigateToLoginScreen() method in app.component.ts ")
+    localStorage.removeItem('userDetails')
+    localStorage.removeItem('loginCredentials')
+    this.route.navigate(['/login'])
+  }
+
+  isAdminOrClubRep() : boolean {
+    let user = JSON.parse(localStorage.getItem("userDetails") as string).user
+    return user.role === "Admin" || user.role === "ClubOwner"
+  }
+
+  isAdminOrStudent() : boolean {
+    let user = JSON.parse(localStorage.getItem("userDetails") as string).user
+    return user.role === "Admin" || user.role === "User"
+  }
+
+  isStudent() : boolean {
+    let user = JSON.parse(localStorage.getItem("userDetails") as string).user
+    return user.role === "User"
   }
 
   
