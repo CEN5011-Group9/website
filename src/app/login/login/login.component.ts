@@ -17,8 +17,8 @@ import { UserService } from '../../user.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  @ViewChild('errorLogin', { static: false }) private errorDiv!: ElementRef;
-  @ViewChild('errorRegister', { static: false }) private errorDivReg!: ElementRef;
+  @ViewChild('errorLoginId', { static: false }) private errorDiv!: ElementRef;
+  @ViewChild('errorRegisterId', { static: false }) private errorDivReg!: ElementRef;
 
   public active = 'login';
 
@@ -46,6 +46,14 @@ export class LoginComponent {
 
   public toggle(tab: string) {
     this.active = tab;
+  }
+
+  public ngAfterViewInit(): void {
+    // Check if errorDiv is defined before accessing it
+    if (this.errorDiv) {
+      this.errorDiv.nativeElement.innerHTML = '';
+      this.errorDiv.nativeElement.style.display = 'none';
+    }
   }
 
   public onSubmit() {
@@ -78,9 +86,14 @@ export class LoginComponent {
         },
         error: ( error : any ) => {
           console.log("This is the error message: "+ error)
-          this.errorDiv.nativeElement.text = error;
+          let errorElement = document.getElementById("errorLogin")
+          if( errorElement != null )
+            errorElement.style.display = 'block'
         }
     });
+
+    
+  
     
     /*
     console.log("The login call is initiated in login.component.ts ")
@@ -120,6 +133,17 @@ export class LoginComponent {
       */
   }
 
+  onInput(){
+    let errorLoginElement = document.getElementById("errorRegister")
+    if( errorLoginElement != null )
+      errorLoginElement.style.display = 'none'
+    let errorRegisterElement = document.getElementById("errorLogin")
+    if( errorRegisterElement != null )
+      errorRegisterElement.style.display = 'none'
+  }
+
+  
+
   public onRegister() {
     this.$http.post(
       '/api/auth/register',
@@ -132,7 +156,9 @@ export class LoginComponent {
       },
       error : ( err : any ) => {
         console.log("The error message is " + err)
-        this.errorDivReg.nativeElement.text = err
+        let errorElement = document.getElementById("errorRegister")
+        if( errorElement != null )
+          errorElement.style.display = 'block'
       }
     });
     /*

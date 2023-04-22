@@ -16,6 +16,7 @@
         id="email"
         name="email"
         formControlName="email"
+        (input)="onInput()"
         required
       />
     </div>
@@ -25,14 +26,15 @@
         id="password"
         name="password"
         formControlName="password"
+        (input)="onInput()"
         required
       />
     </div>
+    <div class="errorLogin" id="errorLogin" style="display: none; color:crimson;">Please check your credentials!!!</div>
     <button class="button is-primary"
       type="submit"
       [disabled]="loginForm.invalid"
     >Login</button>
-    <div class="errorLogin" id="errorLogin"></div>
   </form>
 </ng-container>
 <ng-container *ngIf="active == 'register'">
@@ -43,7 +45,7 @@
     <form [formGroup]="registrationPageForm" (submit)="onRegister()">
       <div>
         <label for="email">Email</label>
-        <input type="text" id="email" name="email" formControlName="email" required />
+        <input type="text" id="email" name="email" formControlName="email" (input)="onInput()" required />
       </div>
       <div>
         <label for="firstName">First Name</label>
@@ -68,8 +70,8 @@
           <input type="checkbox" id="check" name="check" class="checkbox" formControlName="isClubRep" checked>
         </label>
       </div>
+      <div class="errorRegister" id="errorRegister" style="display: none; color: crimson">The email is already registered!!!</div>
       <button class="button is-primary" type="submit" [disabled]="registrationPageForm.invalid">Register</button>
-      <div class="errorRegister"></div>
     </form>
   </div>
 </ng-container>
