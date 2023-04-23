@@ -81,7 +81,7 @@ export class ClubDetailsComponent {
 
     setTimeout( () => {
       this.processingClubAndAddress()
-    } , 30000);
+    } , 1000);
   
   }
 
