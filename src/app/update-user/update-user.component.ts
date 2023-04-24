@@ -102,4 +102,9 @@ export class UpdateUserComponent {
     let user = JSON.parse(localStorage.getItem("userDetails") as string).user
     return user.role === "User"
   }
+
+  navigateToWelcomePage(){
+    console.log("The code flow enters navigateToWelcomePage() method in app.component.ts ")
+    this.$route.navigate(['/welcome-page'])
+  }
 }

@@ -95,4 +95,8 @@ export class ViewClubsComponent {
     return user.role === "User"
   }
 
+  navigateToWelcomePage(){
+    console.log("The code flow enters navigateToWelcomePage() method in app.component.ts ")
+    this.$router.navigate(['/welcome-page'])
+  }
 }

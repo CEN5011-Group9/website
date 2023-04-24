@@ -134,6 +134,10 @@ export class TrackingPageComponent implements OnInit {
       return user.role === "User"
     }
 
+    navigateToWelcomePage(){
+      console.log("The code flow enters navigateToWelcomePage() method in app.component.ts ")
+      this.$route.navigate(['/welcome-page'])
+    }
 
   
 }
